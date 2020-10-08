@@ -1,0 +1,9 @@
+const astroUrl = "http://api.open-notify.org/astros.json";
+const wikiUrl = "https://es.wikipedia.org/api/rest_v1/page/Anexo:Grandes_Maestros_de_Ajedrez";
+
+async function getProfiles() {
+  // Aquí escribiremos la función que hará las llamadas a las API
+ let responseAstro = await fetch(astroUrl);
+ let  astroObj = await responseAstro.json();
+ let peopleArr = await astroObj.people;
+console.log(peopleArr);
