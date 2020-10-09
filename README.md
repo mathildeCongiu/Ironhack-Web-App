@@ -34,13 +34,14 @@ Ironhack Web App/**
   - style.css
 - js/
   - main.js
-  - Signup.js
-  - User.js
-  - Validator.js
+  - signup.js
+  - user.js
+  - validator.js
   - dataRetrieving.js
 - content/
   - img/
   - fonts/
+  - datasets/
 
 ## APIs
 
