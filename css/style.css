@@ -1,0 +1,13 @@
+#title-container {
+    background-color: black;
+  }
+  ​
+  h1 {
+    text-align: center;
+    color: white;
+  }
+  ​
+  .container {
+    width: 400px;
+    margin: 50px auto;
+  }
