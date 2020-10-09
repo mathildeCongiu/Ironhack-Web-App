@@ -1,13 +1,32 @@
-#title-container {
-    background-color: black;
-  }
-  ​
-  h1 {
-    text-align: center;
-    color: white;
-  }
-  ​
-  .container {
-    width: 400px;
-    margin: 50px auto;
-  }
+.background {
+  background-image: url("../content/img/chessdate.jpeg");
+  background-color: #cccccc; /* Used if the image is unavailable */
+  height: 500px; /* You must set a specified height */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+  opacity: 0.6;
+}
+
+
+ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+li {
+  list-style-type: none;
+}
+nav {
+  display: flex;
+  justify-content: space-between;
+  margin: 2rem;
+  background-color: #303841;
+  color: white;
+  height: 60px;
+}
+
+p {
+  color: white
+}

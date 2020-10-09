@@ -2,7 +2,7 @@
 
 ## Description
 
-Compare your birthday with the birthdays of the worldwide Chess Grand Masters. That way you can see which grand-master you could have been born ! So close...
+Compare your birthday with the birthdays of the worldwide Chess Grand Masters. That way you can see which Grand Master you could have been born ! So close...
 
 ## MVP (DOM - CANVAS)
 
@@ -15,6 +15,8 @@ Compare your birthday with the birthdays of the worldwide Chess Grand Masters. T
 ## Backlog
 
 - Calendar display
+- Today's birthday is in Carousel
+- Add Astrological Sign !
 
 ## Wireframes
 
@@ -45,7 +47,7 @@ Ironhack Web App/**
 
 ## APIs
 
-- [Heroku created API, collecting wikipedia information](https://chessgmplayers.herokuapp.com/object)
+- [Heroku created API](https://chessgmplayers.herokuapp.com/object), collecting wikipedia information
 - [Wikimedia](https://en.wikipedia.org/api/rest_v1/page/summary/)
 
 ## Links
