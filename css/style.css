@@ -11,17 +11,6 @@ body {
   font-size: 10px;
 }
 
-
-.background {
-  background-image: url("../content/img/chessdate.jpeg");
-  background-color: #cccccc; /* Used if the image is unavailable */
-  height: 500px; /* You must set a specified height */
-  background-position: center; /* Center the image */
-  background-repeat: no-repeat; /* Do not repeat the image */
-  background-size: cover; /* Resize the background image to cover the entire container */
-
-}
-
 #fullpage {
   background-image: url("../content/img/chesscake.jpeg");
   background-color: #cccccc; /* Used if the image is unavailable */
@@ -31,8 +20,6 @@ body {
   background-size: cover; /* Resize the background image to cover the entire container */
 }
 
-
-
 .first-menu, .second-menu {
   display: flex;
   display: inline-flex;
@@ -40,7 +27,8 @@ body {
 }
 
 li {
-  padding: 5px;
+  padding: 10px;
+  
 }
 
 .first-menu {
@@ -56,10 +44,9 @@ nav {
   justify-content: space-between;
   background-color: #563232;
   color: black;
-  height: 50px;
+  height: 60px;
   width: 100%;
   align-items: center;
-
 }
 
 nav a {
@@ -69,13 +56,13 @@ nav a {
 }
 
 h1 {
-  font-size: 3.5rem;
+  font-size: 6em;
   color: maroon;
   margin: -20px 20px 20px 0;
   opacity: 1;
   text-align: right;
   line-height: 1.5;
-  
+  padding-top: 50px;
 }
 
 .big-title {
@@ -83,16 +70,23 @@ h1 {
 }
 
 
-h2 {
+.big-title h2 {
   text-align: right;
   width: 50%;
   position: relative;
-  left:45%
+  left:45%;
+  font-size: 2em;
 }
 
 p {
   color: white
 }
+
+.button a {
+  text-decoration: none;
+  color: black;
+}
+/* Check button with animation */
 
 .button-container {
   display: flex;
@@ -100,13 +94,13 @@ p {
   align-items: center;
   height: 100%;
   padding: 40px
-
 }
 
 .button {
   min-width: 200px;
   min-height: 40px;
   font-size: 1.5em;
+  font-family: 'Gloria Hallelujah', cursive;
   text-transform: uppercase;
   letter-spacing: 1.3px;
   font-weight: 2.5em;
@@ -158,11 +152,13 @@ button::after {
   left: 50%;
   transform: translate(-50%, -50%);
   animation: ring 1.5s infinite;
+  
 }
 
 button:hover::after, button:focus::after {
   animation: none;
   display: none;
+  border: none;
 }
 
 @keyframes ring {
@@ -176,4 +172,259 @@ button:hover::after, button:focus::after {
     height: 300px;
     opacity: 0;
   }
+}
+
+footer ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  list-style: none;
+}
+
+/* Check it section */
+.background {
+  background-image: url("../content/img/chessdate.jpeg");
+  background-color: #cccccc; /* Used if the image is unavailable */
+  height: 50vh; /* You must set a specified height */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+display: flex;
+flex-direction: row;
+}
+
+.calendar {
+  display: flex;
+  margin: 15px 40px;
+  flex-direction: column;
+}
+
+.calendar label {
+font-size: 2.7em;  
+color: white;
+line-height: 1.8;
+}
+
+
+.background p {
+  font-size: 1.7em;
+  color: #313133;
+
+}
+
+.uploaded-text {
+  background-color: rgba(255,255,255, 0.75);
+  padding:30px
+}
+
+/* Submit button */
+.box-1 { background-color: #30a7c5; }
+
+.btn {
+	line-height: 50px;
+	height: 50px;
+	text-align: center;
+	width: 150px;
+	cursor: pointer;
+}
+
+hr {
+  margin: 5px 0;
+
+
+}
+.card {
+background-color: #30a7c5;
+margin: 10px;
+border-radius: 20px;
+display: flex;
+flex-direction: row;
+align-items: center;
+
+}
+
+.basic-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.thumbnail-container {
+  margin: 20px;
+}
+
+.thumbnail {
+border-radius: 10px;
+height:225px
+
+}
+
+.info-gm {
+  display: flex;
+  flex-direction: column;
+  margin-right: 20px;
+  height: 225px
+}
+
+h3{
+  font-size: 1.4em;
+}
+
+.bio p {
+  font-size: 1.1em;
+}
+
+.elo {
+  color: #ff9900;
+}
+
+.btn-one {
+	color: #FFF;
+	transition: all 0.3s;
+	position: relative;
+}
+.btn-one span {
+	transition: all 0.3s;
+}
+.btn-one::before {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+	opacity: 0;
+	transition: all 0.3s;
+	border-top-width: 1px;
+	border-bottom-width: 1px;
+	border-top-style: solid;
+	border-bottom-style: solid;
+	border-top-color: rgba(255,255,255,0.5);
+	border-bottom-color: rgba(255,255,255,0.5);
+	transform: scale(0.1, 1);
+}
+.btn-one:hover span {
+	letter-spacing: 2px;
+}
+.btn-one:hover::before {
+	opacity: 1;	
+	transform: scale(1, 1);	
+}
+.btn-one::after {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+	transition: all 0.3s;
+	background-color: rgba(255,255,255,0.1);
+}
+.btn-one:hover::after {
+	opacity: 0;	
+	transform: scale(0.1, 1);
+}
+
+.btn span {
+  font-size: 2em;
+}
+
+
+
+/* Sign Up */
+
+.signup, .login{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 40px 60px;
+  background-color: #30a7c5;
+  border-radius: 30px;
+  padding: 20px;
+  box-shadow: #313133;
+}
+
+.signup h2, .login h2{
+font-size: 3em;
+}
+
+.form-wrapper form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+}
+
+.form-wrapper form input {
+  margin: 20px;
+}
+
+.signup-form input, .login input {
+width: 140px;
+height: 30px;
+border-radius: 5px;
+}
+
+form div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+/* FAQ */
+
+
+.scrap-bg {
+  background-image: url("../content/img/chessscrap.jpeg");
+  background-color: #cccccc; /* Used if the image is unavailable */
+  background-position: center; /* Center the image */
+  background-repeat: repeat;
+  background-size: contain;
+
+}
+
+.qa p {
+  color: black;
+  margin: 10px;
+  padding: 10px;
+  font-size: 1.2em;
+  box-shadow: 3px 2px 2px black;
+}
+
+.question {
+  background-color: #ff9100;
+  width: 50%;
+  position: relative;
+  left:45%;
+  font-size: 2em;
+  border-radius: 8px 8px 0px 8px;
+}
+
+.answer {
+  background-color: #30a7c5;
+  width: 60%;
+  position: relative;
+  font-size: 2em;
+  border-radius: 8px 8px 8px 0px;
+}
+
+.transparency {
+  background-color: rgba(255,255,255, 0.35);
+  padding: 30px 0;
+}
+
+footer {
+  border-top: maroon dotted;
+  margin-top: 40px;
+  padding: 10px;
+  background-color: rgba(201, 108, 1);
+}
+
+footer a {
+  text-decoration: none;
+  font-size: 1.4em;
+  color: white;
 }

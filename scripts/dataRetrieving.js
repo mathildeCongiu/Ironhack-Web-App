@@ -59,7 +59,7 @@ btn.addEventListener('click', async (event) => {
 });
 
 
-window,addEventListener("load", getGMlist)
+// window,addEventListener("load", getGMlist)
 
 // Calendar
 

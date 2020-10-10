@@ -4,39 +4,64 @@
 <head>
   <meta charset="UTF-8">
   <title>Happy GM to you! - Signup</title>
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,600" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+ 
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 </head>
 
-<body>
+<body class="scrap-bg">
+
   <header>
+
     <nav>
-      <ul>
+      <ul class= "first-menu">
         <li><a href="index.html"> Home </a></li>
         <li><a href="checkit.html"> Check it! </a></li>
       </ul>
-      <img alt= "Logo"/>
-      <ul>
-        <li><a href="faq.html"> FAQ </a></li>
+      <a class="nav-menu"><img src="content/img/Logo.png" style= "height: 56px; margin-top: 5px" alt= "Logo"/></a>
+      <ul class= "second-menu">
         <li><a href="signin.html"> Sign In </a></li>
-        <li><a href="register.html">Sign Up</a> </li>
+        <li><a href="register.html">Register</a> </li>
       </ul>
+
     </nav>
   </header>
 
+
   <main>
     <section class="signup">
-      <h2>Sign Up</h2>
+        <h2>Register</h2>
       <div class="form-wrapper">
         <form class="signup-form" action="">
-          <input type="text" id="name" placeholder="Name" />
+          <div>
+            <label for="name"><i class="material-icons">person</i></label>
+            <input type="text" id="name" placeholder="Name" />
+  
+          </div>
+        <div>
+          <label for="birthday"><i class="material-icons">cake</i></label>
           <input type="date" id="birthday" placeholder="Birthday" />
-
+        </div>
+         
           <!-- hacemos el input email type text para que no moleste la validación -->
+         <div>
+          <label for="email"><i class="material-icons">email</i></label>
           <input type="text" id="email" placeholder="Email" />
-          <input type="password" id="password" placeholder="****" />
-          <input type="password" id="repeat-password" placeholder="****" />
+         </div>
+         
+         <div>
+          <label for="password"><i class="material-icons">vpn_key</i></label>
+          <input type="password" id="password" placeholder="Password" />
           
+         </div>
+        
+         <div>
+          <label for="repeat-password"><i class="material-icons">vpn_key</i></label>
+          <input type="password" id="repeat-password" placeholder="Repeat password" />
+         
+         </div>
+        
           <!-- El atríbuto `disabled` desactiva el botón. El botón será activado o desactivado por el método `checkButton` en Signup.js -->
           <button type="submit" class="button" id="signup-button" disabled >Sign Up</button>
         </form>
@@ -45,7 +70,12 @@
       </div>
     </section>
   </main>
-
+  <footer>
+    <ul>
+      <li><a href="faq.html"> FAQ </a></li>
+      <li><a href= "acquaintance.html">Acquaintance</a></li>
+    </ul>
+  </footer>
   <script src="scripts/Signup.js"></script>
   <script src="scripts/User.js"></script>
   <script src="scripts/Database.js"></script>

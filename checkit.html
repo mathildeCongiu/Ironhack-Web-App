@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-​<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
   <link rel="stylesheet" href="css/style.css">
   <script defer src="scripts/dataRetrieving.js"></script>
   <title>Happy GM to you!</title>
@@ -15,17 +14,17 @@
 
   <header>
 
-    <nav class="nav">
-      <ul>
+    <nav>
+      <ul class= "first-menu">
         <li><a href="index.html"> Home </a></li>
         <li><a href="checkit.html"> Check it! </a></li>
       </ul>
-      <img src="content/img/logo1.png" style="height: 80px" alt="logo" class= "navbar-brand"/>
-      <ul>
-        <li><a href="faq.html"> FAQ </a></li>
+      <a class="nav-menu"><img src="content/img/Logo.png" style= "height: 56px; margin-top: 5px" alt= "Logo"/></a>
+      <ul class= "second-menu">
         <li><a href="signin.html"> Sign In </a></li>
-        <li><a href="register.html">Sign Up</a> </li>
+        <li><a href="register.html">Register</a> </li>
       </ul>
+
     </nav>
   </header>
 
@@ -33,20 +32,55 @@
 
   <main>
     <section class="background">
+      <div class= "calendar">
+        <label for="start">Enter your birthday!</label>
+        <input type="date" id="start" name="trip-start"
+         value="1989-05-26"
+         min="2018-01-01" max="2018-12-31"> 
+         <div class= "box-1">
+           <div class= "btn btn-one">
+            <span id="date">Check it!</span>
+     
+           </div>
       
-      <label for="start">Enter yout birthday!</label>
-      <input type="date" id="start" name="trip-start"
-       value="2018-07-22"
-       min="2018-01-01" max="2018-12-31"> 
-       <button id="date">Check it Now!</button>
-       <p class="home"></p>
-      <div id="chessGM"></div>
-      <p>Enter your birthday and check right now if you were born the same day as a Chess Player</p>
-    </section>
+         </div>
+      </div>
+      <div class= "uploaded-text">
+        <p>Enter your birthday and check right now if you were born the same day as a Chess Player</p>
 
+      </div>
+
+      </section>
+      <section class="result-container">
+        <hr>
+        <div class="card">
+          <div class="thumbnail-container">
+            <img class="thumbnail" src="content/img/kasparov.jpg" alt="random-GM" />
+          </div>
+          <div class="info-gm">
+            <div class="basic-info">
+              <h3 class="gm-name">Surname Name</h3>
+              <h3 class="elo">Elo</h3>
+            </div>
+            <div class="bio">
+              <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."</p>
+            </div>
+          </div>
+        </div>
+      
+
+      </section>
+    <div id="chessGM"></div>
+
+    <p class="home"></p>
 </main>
+<footer>
+  <ul>
+    <li><a href="faq.html"> FAQ </a></li>
+    <li><a href= "acquaintance.html">Acquaintance</a></li>
+  </ul>
+</footer>
 
-  
 </body>
 </html>
 
