@@ -58,3 +58,9 @@ btn.addEventListener('click', async (event) => {
     event.target.remove()
 });
 
+
+window,addEventListener("load", getGMlist)
+
+// Calendar
+
+
