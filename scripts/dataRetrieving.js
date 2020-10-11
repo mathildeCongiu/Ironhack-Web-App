@@ -34,57 +34,113 @@ async function checkBirthdayMatch(userBirthday) {
 
 checkBirthdayMatch(userBirthdayValue)
 
-async function findWikiInfo(page) {
+async function findWikiInfo() {
+    let wikiProfiles = []
     let resultMatchArr = await checkBirthdayMatch(userBirthdayValue);
     for (let i= 0; i< resultMatchArr.length; i++) {
         let wikiDestructuration = await resultMatchArr[i].wikiPage.split("https://en.wikipedia.org/wiki/")
         let redirection = await wikiDestructuration[1];
-        // let name = await person.Name.split(", ")[1] + "_" + person.Name.split(", ")[0];
+        
          let wikiPage = await fetch (wikiUrl + redirection);
+         console.log(wikiPage);
          let response = await wikiPage.json();
          let thumbnail = await response.thumbnail.source;
          let extract = await response.extract;
+         console.log(extract);
+         let name = await response.title;
+        wikiProfile= {
+            name: name,
+            thumbnail: thumbnail,
+            extract: extract
+        }
 
-         // Create a new Array to store this new info ?
+        wikiProfiles.push(wikiProfile);
+        console.log(wikiProfiles);
+
          // Do a catch try if there is no answer to fecth to wikipedia
          // retrieve info in function generate HTML
         }
-    
+
+        return wikiProfiles
 }
 
-findWikiInfo(userBirthdayValue)
+findWikiInfo()
+let infoPlayers = findWikiInfo()
 
-function generateHTML(list) {
-    list.map(data => {
-        console.log(data.title);
+function generateHTML2(){
+    let resultContainer = document.querySelector(".result-container")
+    let newCard = document.createElement("div")
+    resultContainer.appendChild(newCard)
 
-        let tagForInfo = document.querySelector(".home");
-        let tagCreated = document.createElement("p");
-        let appended = tagForInfo.appendChild(tagCreated);
-        appended.innerHTML = data.title;
-    })
-    // list.map(person => {
-        const section = document.createElement('section');
-        let prueba = "<h2>Easy try<h2>"
 
-        prueba.appendChild(section);
-        const thumbnail = list[0].thumbnail ? `<img src='${list[0].thumbnail.source}'>` : '';
-        section.innerHTML = `
-        <span>${person.name}</span>
-        <h2>${person.title}</h2>
-        ${thumbnail}
-        <p>${person.description}</p>
-        <p>${person.extract}</p>
-        `;
-    // });
+        newCard.innerHTML = `<div class="card">
+    <div class="thumbnail-container">
+      <img class="thumbnail" src="" alt="random-GM" />
+    </div>
+    <div class="info-gm">
+      <div class="basic-info">
+        <h3 class="gm-name"> Hulk </h3>
+      </div>
+      <div class="bio">
+        <p>Impressive character that never has been grand master</p>
+      </div>
+    </div>
+  </div>`
 }
 
+
+ function generateHTML(gmArray) {
+    gmArray.map(data => { 
+        let resultContainer = document.querySelector(".result-container")
+        let newCard = document.createElement("div")
+        resultContainer.appendChild(newCard)
+  
+        const thumbnail = data.thumbnail ? `<img src='${data.thumbnail.source}'>` : `<img src='${content/img/kasparov.jpg}'>`;
+        
+            newCard.innerHTML = `<div class="card">
+        <div class="thumbnail-container">
+          <img class="thumbnail" src=${thumbnail} alt="random-GM" />
+        </div>
+        <div class="info-gm">
+          <div class="basic-info">
+            <h3 class="gm-name">${data.name}</h3>
+          </div>
+          <div class="bio">
+            <p>${data.extract}</p>
+          </div>
+        </div>
+      </div>`
+      console.log(data.extract);
+}
+
+)
+
+    //   resultContainer.appendChild(newCard)
+
+    //     // let tagForInfo = document.querySelector(".home");
+    //     // let tagCreated = document.createElement("p");
+    //     // let appended = tagForInfo.appendChild(tagCreated);
+    //     // appended.innerHTML = data.title;
+    // })
+
+    // const section = document.createElement('section');
+    //     peopleList.appendChild(section);
+    //     const thumbnail = person.thumbnail ? `<img src='${person.thumbnail.source}'>` : '';
+    //     section.innerHTML = `
+    //     <span>${person.craft}</span>
+    //     <h2>${person.title}</h2>
+    //     ${thumbnail}
+    //     <p>${person.description}</p>
+    //     <p>${person.extract}</p>`
+    // // });
+}
+
+console.log(generateHTML(infoPlayers))
 
 btnCheckIt.addEventListener('click', async (event) => {
     event.target.textContent = "Loading...";
-    const gmList = await getGMlist();
+    const gmList = await findWikiInfo();
     await Promise.all(gmList)
-    .then(values => generateHTML(values));
+    .then(values => generateHTML(gmList));
     event.target.remove()
 });
-
