@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap');
 
+/*CSS for the whole site */
 * {
   margin: 0;
   padding: 0;
@@ -11,6 +12,24 @@ body {
   font-size: 10px;
 }
 
+header {
+  display: flex;
+  flex-direction: column;
+}
+
+
+@media (min-width: 700px) {
+.firstmenu {
+  display: flex;
+    justify-content: inherit;
+  }
+  li {
+    padding: 0;
+  }
+}
+/* Home page */
+
+
 #fullpage {
   background-image: url("../content/img/chesscake.jpeg");
   background-color: #cccccc; /* Used if the image is unavailable */
@@ -20,10 +39,12 @@ body {
   background-size: cover; /* Resize the background image to cover the entire container */
 }
 
-.first-menu, .second-menu {
+.first-menu {
   display: flex;
   display: inline-flex;
   list-style: none;
+  justify-content: space-evenly;
+  width: 100%;
 }
 
 li {
@@ -34,14 +55,10 @@ li {
 .first-menu {
   margin-left: 8px;
 }
-.second-menu {
-  margin-right: 8px;
-}
 
 
 nav {
   display: flex;
-  justify-content: space-between;
   background-color: #563232;
   color: black;
   height: 60px;
@@ -86,6 +103,75 @@ p {
   text-decoration: none;
   color: black;
 }
+
+i {
+  color: white;
+  margin: none;
+}
+
+.mobilebar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.mobile-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mobile-menu li {
+  padding: none;
+  margin: -12px 10px;
+}
+
+/* Responsive Ipad */
+
+@media (min-width: 700px) {
+  h1 {
+    margin: 0px 40px 30px 40%;
+    font-size: 7em;
+  }
+  .big-title h2 {
+    text-align: right;
+    width: 40%;
+    position: relative;
+    left:57%;
+    font-size:2.5em;
+  }
+  .button-container {
+    margin: 60px;
+    font-size: 1.5em;
+  }
+  .big-title {
+    padding: 30px;
+  }
+  .button {
+    width: 300px;
+    height: 60px;
+
+  }
+
+}
+
+@media (min-width: 950px) {
+  header {
+    flex-direction: column-reverse;
+  }
+
+  #fullpage {
+background-position-x: 240%;
+background-repeat: repeat-x;
+  }
+  .button-container {
+    margin: 60px 2% 50px 60%;
+
+  }
+
+}
+
 /* Check button with animation */
 
 .button-container {
@@ -195,7 +281,7 @@ flex-direction: row;
 
 .calendar {
   display: flex;
-  margin: 15px 40px;
+  margin: 15px 30px;
   flex-direction: column;
 }
 
@@ -207,13 +293,12 @@ line-height: 1.8;
 
 
 .background p {
-  font-size: 1.7em;
+  font-size: 1.6em;
   color: #313133;
-
 }
 
 .uploaded-text {
-  background-color: rgba(255,255,255, 0.75);
+  background-color: rgba(255, 255, 255, 0.85);
   padding:30px
 }
 
@@ -230,6 +315,8 @@ line-height: 1.8;
 
 hr {
   margin: 5px 0;
+  border-style: ridge;
+  
 
 
 }
@@ -275,9 +362,6 @@ h3{
   font-size: 1.1em;
 }
 
-.elo {
-  color: #ff9900;
-}
 
 .btn-one {
 	color: #FFF;
@@ -334,7 +418,7 @@ h3{
 
 
 
-/* Sign Up */
+/* Sign Up Sign In */
 
 .signup, .login{
   display: flex;
@@ -366,12 +450,44 @@ font-size: 3em;
 width: 140px;
 height: 30px;
 border-radius: 5px;
+padding: 10px;
 }
+
 
 form div {
   display: flex;
   flex-direction: row;
   align-items: center;
+}
+
+.register {
+  width: 150px;
+  height: 45px;
+  border-radius: 20px;
+  background-color: rgba(255, 136, 0);
+  margin: 20px;
+  color: white;
+  font-size: 1.5em;
+  font-family: 'Gloria Hallelujah', cursive;
+}
+
+.register:disabled {
+  background-color: rgba(255, 136, 0, 0.6);
+  color:  rgba(255,255,255, 0.75);;
+}
+
+@media (min-width: 700px) {
+
+  .signup, .login {
+    margin: 40px 30%
+  }
+}
+
+@media (min-width: 950px) {
+
+  .signup, .login {
+    margin: 40px 40%
+  }
 }
 
 /* FAQ */
@@ -427,4 +543,19 @@ footer a {
   text-decoration: none;
   font-size: 1.4em;
   color: white;
+}
+
+@media (min-width: 700px) {
+
+  .transparency {
+    width: 350px;
+    margin: 0 40%;
+  }
+}
+
+@media (min-width: 950px) {
+
+  .signup, .login {
+    margin: 40px 40%
+  }
 }

@@ -60,6 +60,7 @@ async function findWikiInfo() {
          // Do a catch try if there is no answer to fecth to wikipedia
          // retrieve info in function generate HTML
         }
+    
 
         return wikiProfiles
 }
@@ -92,10 +93,10 @@ function generateHTML2(){
  function generateHTML(gmArray) {
     gmArray.map(data => { 
         let resultContainer = document.querySelector(".result-container")
-        let newCard = document.createElement("div")
-        resultContainer.appendChild(newCard)
+        let newCard = document.createElement("div");
+        resultContainer.appendChild(newCard);
   
-        const thumbnail = data.thumbnail ? `<img src='${data.thumbnail.source}'>` : `<img src='${content/img/kasparov.jpg}'>`;
+        const thumbnail = data.thumbnail ? `<img src='${data.thumbnail.source}'>` : "`<img src='${content/img/kasparov.jpg}'>`";
         
             newCard.innerHTML = `<div class="card">
         <div class="thumbnail-container">
@@ -111,10 +112,7 @@ function generateHTML2(){
         </div>
       </div>`
       console.log(data.extract);
-}
-
-)
-
+})
     //   resultContainer.appendChild(newCard)
 
     //     // let tagForInfo = document.querySelector(".home");
@@ -122,17 +120,6 @@ function generateHTML2(){
     //     // let appended = tagForInfo.appendChild(tagCreated);
     //     // appended.innerHTML = data.title;
     // })
-
-    // const section = document.createElement('section');
-    //     peopleList.appendChild(section);
-    //     const thumbnail = person.thumbnail ? `<img src='${person.thumbnail.source}'>` : '';
-    //     section.innerHTML = `
-    //     <span>${person.craft}</span>
-    //     <h2>${person.title}</h2>
-    //     ${thumbnail}
-    //     <p>${person.description}</p>
-    //     <p>${person.extract}</p>`
-    // // });
 }
 
 console.log(generateHTML(infoPlayers))
@@ -144,3 +131,45 @@ btnCheckIt.addEventListener('click', async (event) => {
     .then(values => generateHTML(gmList));
     event.target.remove()
 });
+
+
+
+
+//Functions for other possible matches (with month or year)
+
+// async function checkBirthYearMatch(userBirthday) {
+//     const gmList = await getGMlist();
+
+//     let resultMatchArrYear = [];
+    
+//     for (let i= 0; i< gmList.length; i++) {
+//         let userBirthYear = await userBirthday.split("-")[0];
+//         console.log(userBirthday)
+//         if (await userBirthYear === gmList[i].born.split("-")[0]) {
+//             resultMatchArrYear.push(gmList[i]);
+//         }
+            
+//         }
+    
+//     console.log(resultMatchArrYear)
+//     return resultMatchArrYear
+// }
+
+
+
+// async function checkBirthMonthYearMatch(userBirthday) {
+//     const gmList = await getGMlist();
+
+//     let resultMatchArrMonthYear = [];
+    
+//     for (let i= 0; i< gmList.length; i++) {
+//         let userBirthMonthYear = await userBirthday.split("-")[0] + "-" + userBirthday.split("-")[1];
+//         if (await userBirthMonthYear === gmList[i].born.split("-")[0]) {
+//             resultMatchMonthYear.push(gmList[i]);
+//         }
+            
+//         }
+    
+//     console.log(resultMatchArrMonthYear)
+//     return resultMatchArrMonthYear
+// }
