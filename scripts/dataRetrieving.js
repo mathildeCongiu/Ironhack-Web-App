@@ -12,11 +12,11 @@ console.log(userBirthdayValue)
 async function getGMlist(){
     const gmResponse = await fetch(gmObjUrl);
     const gmJSON = await gmResponse.json();
-    
+    console.log(gmJSON, "Response GM")
     return gmJSON
 }
 
-console.log(getGMlist)
+getGMlist();
 
 async function checkBirthdayMatch(userBirthday) {
     const gmList = await getGMlist();
@@ -65,13 +65,15 @@ async function findWikiInfo() {
         return wikiProfiles
 }
 
-findWikiInfo()
-let infoPlayers = findWikiInfo()
+findWikiInfo();
+let infoPlayers = findWikiInfo();
+
+console.log(infoPlayers);
 
 function generateHTML2(){
-    let resultContainer = document.querySelector(".result-container")
-    let newCard = document.createElement("div")
-    resultContainer.appendChild(newCard)
+    let resultContainer = document.querySelector(".result-container");
+    let newCard = document.createElement("div");
+    resultContainer.appendChild(newCard);
 
 
         newCard.innerHTML = `<div class="card">
@@ -90,13 +92,15 @@ function generateHTML2(){
 }
 
 
- function generateHTML(gmArray) {
-    gmArray.map(data => { 
+ async function generateHTML(gmArray) {
+   let result = await gmArray
+    result.map(data => { 
+      console.log(data,'data probando')
         let resultContainer = document.querySelector(".result-container")
         let newCard = document.createElement("div");
         resultContainer.appendChild(newCard);
   
-        const thumbnail = data.thumbnail ? `<img src='${data.thumbnail.source}'>` : "`<img src='${content/img/kasparov.jpg}'>`";
+        const thumbnail = data.thumbnail ? data.thumbnail : data.thumbnail.source;
         
             newCard.innerHTML = `<div class="card">
         <div class="thumbnail-container">
@@ -122,13 +126,13 @@ function generateHTML2(){
     // })
 }
 
-console.log(generateHTML(infoPlayers))
+generateHTML(infoPlayers)
 
-btnCheckIt.addEventListener('click', async (event) => {
+btnCheckIt.addEventListener('click', (event) => {
     event.target.textContent = "Loading...";
-    const gmList = await findWikiInfo();
-    await Promise.all(gmList)
-    .then(values => generateHTML(gmList));
+    // const gmList = findWikiInfo();
+     Promise.all(gmList)
+    .then(values => generateHTML(values));
     event.target.remove()
 });
 
