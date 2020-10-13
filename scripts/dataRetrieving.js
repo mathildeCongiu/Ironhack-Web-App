@@ -52,12 +52,12 @@ async function checkBirthdayMatch(userBirthday) {
     arrAllResults.push(perfectResultMatchArr);
     arrAllResults.push(birthdayMatchArr);
     arrAllResults.push(yearMatchArr);
-    console.log(arrAllResults);
+    // console.log(arrAllResults);
 
     return arrAllResults;
 }
 
-checkBirthdayMatch(userBirthdayValue);
+// checkBirthdayMatch(userBirthdayValue);
 
 async function findWikiInfo() {
     let wikiProfiles = [];
@@ -65,43 +65,49 @@ async function findWikiInfo() {
     let perfectMatch = [];
     let birthdayMatch = [];
     let yearMatch = []
+
     let arrAllResults = await checkBirthdayMatch(userBirthdayValue);
 
+    // console.log(arrAllResults)
     for (let i = 0; i < arrAllResults.length; i++) {
       if (arrAllResults[i].length > 0) {
         arrAllResults[i].forEach( async data => {
-         if (data.wikiPage && data.wikiPage.includes("https://en.wikipedia.org/wiki/")) {
-          // console.log(data.wikiPage)
+          // console.log(data.wikiPage.includes("https://en.wikipedia.org/wiki/"))
+         if (data.wikiPage.includes("https://en.wikipedia.org/wiki/")) {
+          //  console.log(data.wikiPage)
         let wikiDestructuration = await data.wikiPage.split("https://en.wikipedia.org/wiki/");
         let redirection = await wikiDestructuration[1];
       
           let wikiPage = await fetch (wikiUrl + redirection);
           // console.log(wikiPage);
           let response = await wikiPage.json();
-
-          let thumbnail
-          if (await response.thumbnail) {
-             thumbnail = response.thumbnail
+            // console.log(response)
+         
+            
+          if (typeof response.thumbnail === "object") {
+            var thumbnail = await response.thumbnail.source
           }
-          // else if (await response.thumbnail.source) {
-          //   thumbnail = response.thumbnail.source
-          // }
+          else if (typeof response.thumbnail === "string") {
+            var thumbnail = await response.thumbnail
+          }
 
           else {
-            thumbnail = "content/img/king.jpg"
+            var thumbnail = "content/img/king.jpg"
           }
 
           // let thumbnail = await response.thumbnail.source;
-          let extract = await response.extract;
+          let extract = response.extract;
           // console.log(extract);
-          let name = await response.title;
+          let name = response.title;
+
+          // console.log(name)
          wikiProfile= {
              name: name,
              thumbnail: thumbnail,
              extract: extract
          };
 
-        //  console.log(wikiProfile, "AHORA ES LA SIGUIENTE COMPROBACION")
+          // console.log(wikiProfile, "AHORA ES LA SIGUIENTE COMPROBACION")
          
          if (i=== 0) {
            perfectMatch.push(wikiProfile);
@@ -117,77 +123,117 @@ async function findWikiInfo() {
          
         }
         else {
-          // console.log(`${data.name} is a player from ${data.mostRecentFed} who got the Grand Master title in ${data.yearTitle}`);
+
+          // console.log(data)
+          //let thumbnail = "content/img/king.jpg";
+          let name = data.name;
+          let extract = `${data.name} is a player from ${data.mostRecentFed} who got the Grand Master title in ${data.yearTitle}`;
+
+          wikiProfile = {
+            name: name,
+          //  thumbnail: thumbnail,
+            extract: extract
+        };
+
           if (i=== 0) {
-            perfectMatch.push(data);
+            perfectMatch.push(wikiProfile);
           }
  
           else if (i === 1 ) {
-           birthdayMatch.push(data);
+           birthdayMatch.push(wikiProfile);
           }
  
           else if (i === 2) {
-           yearMatch.push(data);
+           yearMatch.push(wikiProfile);
           }
         }
         
         })
       }
       else {console.log("There is no player born the exact same day as you")
-    };
+    }
     
 
   }
-  
-  wikiProfiles.push(perfectMatch, birthdayMatch, yearMatch)
-
+  // console.log(wikiProfiles, "kjhgfdsa")
+//   wikiProfiles.push(perfectMatch, birthdayMatch, yearMatch);
+// wikiProfiles[0].push(perfectMatch)
+    wikiProfiles = [perfectMatch, birthdayMatch, yearMatch];
      
-        // console.log(wikiProfiles)
-        return wikiProfiles
+        // console.log(wikiProfiles, "check if same number of elements")
+        return wikiProfiles;
     }
 
-
-findWikiInfo();
-let infoPlayers = findWikiInfo();
-
- async function generateHTML(gmArray) {
-   let result = await gmArray
-
-   for (let i = 0; i < result.length; i++) {
-     result[i].map(data => { 
-        console.log(data,'data probando')
+ async function generateHTML() {
+   let data =  await findWikiInfo()
+console.log(data, 'DATAAAAAAA')
+  // console.log(result, "here it is")
+  // result.map( player => console.log(player, "DFFGHHGFFGDGGD"))
+  
+    
+        data.forEach(async resulT =>  {
+          let result = await resulT
+          console.log(result)
+        // if (result[i].length > 0){
+       // console.log(result.length, "check array number")
+        result.map(player => { 
+          console.log(player, "PLAYERS")
           let resultContainer = document.querySelector(".result-container")
           let newCard = document.createElement("div");
           resultContainer.appendChild(newCard);
-
-
-    
-          // const thumbnail = data.thumbnail ? data.thumbnail : data.thumbnail.source;
-          
               newCard.innerHTML = `<div class="card">
           <div class="thumbnail-container">
-            <img class="thumbnail" src=${thumbnail} alt="random-GM" />
+            <img class="thumbnail" src=${player.thumbnail} alt="random-GM" />
           </div>
           <div class="info-gm">
             <div class="basic-info">
-              <h3 class="gm-name">${data.name}</h3>
+              <h3 class="gm-name">${player.name}</h3>
             </div>
             <div class="bio">
-              <p>${data.extract}</p>
+              <p>${player.extract}</p>
             </div>
           </div>
         </div>`
-  })
-     }
-   }
+        })
+      })
+    }
+    
+      
+     
+  //  }
 
 
-generateHTML(infoPlayers)
+// generateHTML()
+
+// btnCheckIt.addEventListener('click', (event) => {
+//   event.target.textContent = "Loading...";
+//   // const gmList = findWikiInfo();
+//    Promise.all(gmList)
+//   .then(values => generateHTML(values));
+//   event.target.remove()
+// });
 
 btnCheckIt.addEventListener('click', (event) => {
     event.target.textContent = "Loading...";
-    // const gmList = findWikiInfo();
-     Promise.all(gmList)
-    .then(values => generateHTML(values));
-    event.target.remove()
+    generateHTML();
+    event.target.textContent ="Check It"
 });
+
+
+// Agregar en el generate HTML
+// if (i === 0) {
+//   let resultContainer = document.querySelector(".result-container");
+//   let titlePerfectMatch= document.createElement(h2);
+//   titlePerfectMatch.innerHTML = "Someone is born the exact same day as you";
+//   resultContainer.appendChild(titlePerfectMatch);
+
+// }
+
+// if ( i === 1) {
+//   titlebirthdayMatch.innerHTML = `${data.length} GMs celebrate the same birthday as you`;
+// }
+
+// if (i === 2 ) {
+//   titlebirthdayMatch.innerHTML = `${data.length} were born the same year as you`;
+
+// }
