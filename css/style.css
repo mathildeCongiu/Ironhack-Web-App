@@ -316,6 +316,8 @@ margin: 20px
   display: flex;
   flex-direction: column;
   background-color: #dddddd;
+  height: 100%;
+  width: 100%;
 }
 
 .result-container h2 {
@@ -436,6 +438,7 @@ width: 360px;
 border-radius: 10px;
 height:226px;
 width: 150px;
+object-fit: cover;
 
 }
 

@@ -7,6 +7,8 @@ const gmList = document.querySelector('#chessGM');
 const btnCheckIt = document.querySelector("#check-it");
 let userBirthdayValue = document.querySelector("#start").value;
 
+console.log(userBirthdayValue)
+
 //Functions
 async function getGMlist(){
     const gmResponse = await fetch(gmObjUrl);
@@ -164,19 +166,28 @@ async function findWikiInfo() {
         return wikiProfiles;
     }
 
+
+
+    
  async function generateHTML() {
    let result =  await findWikiInfo()
 
-  // console.log(result, "here it is")
-  // result.map( player => console.log(player, "DFFGHHGFFGDGGD"))
+   let resultContainer = document.querySelector(".result-container");
     
-    
-       return result.forEach(async array =>  {
+       return result.forEach(async (array, index) =>  {
+         if (index === 0) {
+         
           if (array.length > 0){
+            let perfectMatch = document.createElement("div")
+            resultContainer.appendChild(perfectMatch)
+            let title = document.createElement("h2");
+            title.innerHTML = "Someone is born the exact same day as you";
+            perfectMatch.appendChild(title);
+
          array.map( async player => { 
-          let resultContainer = document.querySelector(".card-container")
+          
           let newCard = document.createElement("div");
-          resultContainer.appendChild(newCard);
+          perfectMatch.appendChild(newCard);
               newCard.innerHTML = `<div class="card">
           <div class="thumbnail-container">
             <img class="thumbnail" src=${await player.thumbnail} alt="random-GM" />
@@ -193,12 +204,69 @@ async function findWikiInfo() {
          }
          )
         }
-      }
-      )
+      
+      
+         }
+        else if (index === 1)  {
+          if (array.length > 0){
+            let birthdayMatch = document.createElement("div")
+            resultContainer.appendChild(birthdayMatch)
+            let title = document.createElement("h2");
+            title.innerHTML = `${array.length} GMs celebrate the same birthday as you`;
+            birthdayMatch.appendChild(title);
+
+         array.map( async player => { 
+          
+          let newCard = document.createElement("div");
+          birthdayMatch.appendChild(newCard);
+              newCard.innerHTML = `<div class="card">
+          <div class="thumbnail-container">
+            <img class="thumbnail" src=${await player.thumbnail} alt="random-GM" />
+          </div>
+          <div class="info-gm">
+            <div class="basic-info">
+              <h3 class="gm-name">${await player.name}</h3>
+            </div>
+            <div class="bio">
+              <p>${await player.extract}</p>
+            </div>
+          </div>
+        </div>`
+         }
+         )
+        }
     }
-        
+        else if (index === 2 ) {
+          if (array.length > 0) {
+            let yearMatch = document.createElement("div")
+            resultContainer.appendChild(yearMatch)
+            let title = document.createElement("h2");
+            title.innerHTML = `${array.length} GMs were born the same year as you`;
+            yearMatch.appendChild(title);
 
-
+         array.map( async player => { 
+          
+          let newCard = document.createElement("div");
+          yearMatch.appendChild(newCard);
+              newCard.innerHTML = `<div class="card">
+          <div class="thumbnail-container">
+            <img class="thumbnail" src=${await player.thumbnail} alt="random-GM" />
+          </div>
+          <div class="info-gm">
+            <div class="basic-info">
+              <h3 class="gm-name">${await player.name}</h3>
+            </div>
+            <div class="bio">
+              <p>${await player.extract}</p>
+            </div>
+          </div>
+        </div>`
+         }
+         )
+        }
+    }}
+       )
+  }
 
 
 // generateHTML()
@@ -216,22 +284,3 @@ btnCheckIt.addEventListener('click', (event) => {
     generateHTML();
     event.target.textContent ="Check It"
 });
-
-
-// Agregar en el generate HTML
-// if (i === 0) {
-//   let resultContainer = document.querySelector(".result-container");
-//   let titlePerfectMatch= document.createElement(h2);
-//   titlePerfectMatch.innerHTML = "Someone is born the exact same day as you";
-//   resultContainer.appendChild(titlePerfectMatch);
-
-// }
-
-// if ( i === 1) {
-//   titlebirthdayMatch.innerHTML = `${data.length} GMs celebrate the same birthday as you`;
-// }
-
-// if (i === 2 ) {
-//   titlebirthdayMatch.innerHTML = `${data.length} were born the same year as you`;
-
-// }
