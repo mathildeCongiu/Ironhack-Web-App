@@ -4,7 +4,7 @@ const wikiUrl = "https://en.wikipedia.org/api/rest_v1/page/summary/";
 
 // Variables for selectors
 const gmList = document.querySelector('#chessGM');
-const btnCheckIt = document.querySelector("#checkIt");
+const btnCheckIt = document.querySelector("#check-it");
 let userBirthdayValue = document.querySelector("#start").value;
 
 //Functions
@@ -18,7 +18,7 @@ async function getGMlist(){
 async function checkBirthdayMatch(userBirthday) {
     const gmList = await getGMlist();
 
-    let arrAllResults = []
+    let arrAllResults = [];
 
     let perfectResultMatchArr = [];
     let birthdayMatchArr = [];
@@ -71,7 +71,7 @@ async function findWikiInfo() {
     // console.log(arrAllResults)
     for (let i = 0; i < arrAllResults.length; i++) {
       if (arrAllResults[i].length > 0) {
-        arrAllResults[i].forEach( async data => {
+        await Promise.all(arrAllResults[i].map( async data => {
           // console.log(data.wikiPage.includes("https://en.wikipedia.org/wiki/"))
          if (data.wikiPage.includes("https://en.wikipedia.org/wiki/")) {
           //  console.log(data.wikiPage)
@@ -92,7 +92,7 @@ async function findWikiInfo() {
           }
 
           else {
-            var thumbnail = "content/img/king.jpg"
+            var thumbnail = "content/img/king.jpg";
           }
 
           // let thumbnail = await response.thumbnail.source;
@@ -125,13 +125,13 @@ async function findWikiInfo() {
         else {
 
           // console.log(data)
-          //let thumbnail = "content/img/king.jpg";
+          let thumbnail = "content/img/king.jpg";
           let name = data.name;
           let extract = `${data.name} is a player from ${data.mostRecentFed} who got the Grand Master title in ${data.yearTitle}`;
 
           wikiProfile = {
             name: name,
-          //  thumbnail: thumbnail,
+          thumbnail: thumbnail,
             extract: extract
         };
 
@@ -148,7 +148,7 @@ async function findWikiInfo() {
           }
         }
         
-        })
+        }))
       }
       else {console.log("There is no player born the exact same day as you")
     }
@@ -165,42 +165,40 @@ async function findWikiInfo() {
     }
 
  async function generateHTML() {
-   let data =  await findWikiInfo()
-console.log(data, 'DATAAAAAAA')
+   let result =  await findWikiInfo()
+
   // console.log(result, "here it is")
   // result.map( player => console.log(player, "DFFGHHGFFGDGGD"))
-  
     
-        data.forEach(async resulT =>  {
-          let result = await resulT
-          console.log(result)
-        // if (result[i].length > 0){
-       // console.log(result.length, "check array number")
-        result.map(player => { 
-          console.log(player, "PLAYERS")
-          let resultContainer = document.querySelector(".result-container")
+    
+       return result.forEach(async array =>  {
+          if (array.length > 0){
+         array.map( async player => { 
+          let resultContainer = document.querySelector(".card-container")
           let newCard = document.createElement("div");
           resultContainer.appendChild(newCard);
               newCard.innerHTML = `<div class="card">
           <div class="thumbnail-container">
-            <img class="thumbnail" src=${player.thumbnail} alt="random-GM" />
+            <img class="thumbnail" src=${await player.thumbnail} alt="random-GM" />
           </div>
           <div class="info-gm">
             <div class="basic-info">
-              <h3 class="gm-name">${player.name}</h3>
+              <h3 class="gm-name">${await player.name}</h3>
             </div>
             <div class="bio">
-              <p>${player.extract}</p>
+              <p>${await player.extract}</p>
             </div>
           </div>
         </div>`
-        })
-      })
+         }
+         )
+        }
+      }
+      )
     }
-    
-      
-     
-  //  }
+        
+
+
 
 
 // generateHTML()

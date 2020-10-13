@@ -127,6 +127,16 @@ i {
   margin: -12px 10px;
 }
 
+.today-card {
+  display: flex;
+  flex-direction: column;
+  background-color: #30a7c5;
+  margin: 70px;
+  padding: 20px;
+  border-radius: 20px;
+  align-items: center;
+
+}
 /* Responsive Ipad */
 
 @media (min-width: 700px) {
@@ -277,11 +287,12 @@ footer ul {
   background-size: cover; /* Resize the background image to cover the entire container */
 display: flex;
 flex-direction: row;
+justify-content: space-between;
 }
 
 .calendar {
   display: flex;
-  margin: 15px 30px;
+  margin: 15px 20px;
   flex-direction: column;
 }
 
@@ -289,19 +300,106 @@ flex-direction: row;
 font-size: 2.7em;  
 color: white;
 line-height: 1.8;
+margin: 20px
 }
 
+.calendar input {
+  height: 30px;
+  font-size: 1.4em;
+  font-family: 'Gloria Hallelujah', cursive;
+  text-align: center;
+}
+
+/* Bottom part of the page */
+
+.result-container {
+  display: flex;
+  flex-direction: column;
+  background-color: #dddddd;
+}
+
+.result-container h2 {
+  margin-left: 15px;
+  font-size: 2em;
+  margin-top: 10px;
+}
 
 .background p {
   font-size: 1.6em;
   color: #313133;
 }
 
-.uploaded-text {
-  background-color: rgba(255, 255, 255, 0.85);
-  padding:30px
+.card-container{
+display: flex;
+flex-wrap: wrap;
+flex-direction: row;
+justify-content: space-evenly;
 }
 
+.uploaded-text {
+  background-color: rgba(202, 162, 101, 0.85);
+  padding:30px;
+  width: 80%
+}
+
+
+#check-it span{
+  color:white;
+}
+
+@media (min-width : 750px) {
+  .uploaded-text {
+    background-color: rgba(202, 162, 101, 0.85);
+    padding:30px;
+    width: 40%;
+  }
+
+  .uploaded-text p {
+    font-size: 2.8em;
+  }
+
+  #check-it {
+    margin: 20px 24%;
+    height: 60px;
+    font-size: 1.7em;
+  }
+
+  .calendar label {
+    font-size: 3em;
+  }
+
+  .calendar input {
+    height: 50px;
+    font-size: 1.8em;
+  }
+}
+
+@media (min-width : 900px) {
+  .uploaded-text {
+    background-color: rgba(202, 162, 101, 0.85);
+    padding:30px;
+    width: 40%;
+  }
+
+  .uploaded-text p {
+    font-size: 4em;
+  }
+
+  #check-it {
+    margin: 20px 37%;
+    height: 60px;
+  }
+
+  .calendar label {
+    font-size: 6em;
+  }
+
+  .calendar input {
+    height: 70px;
+    font-size: 2.4em;
+  }
+  
+}
 /* Submit button */
 .box-1 { background-color: #30a7c5; }
 
@@ -313,21 +411,14 @@ line-height: 1.8;
 	cursor: pointer;
 }
 
-hr {
-  margin: 5px 0;
-  border-style: ridge;
-  
-
-
-}
 .card {
 background-color: #30a7c5;
-margin: 10px;
+margin: 8px;
 border-radius: 20px;
 display: flex;
 flex-direction: row;
 align-items: center;
-
+width: 360px;
 }
 
 .basic-info {
@@ -361,56 +452,6 @@ h3{
 
 .bio p {
   font-size: 1.1em;
-}
-
-
-.btn-one {
-	color: #FFF;
-	transition: all 0.3s;
-	position: relative;
-}
-.btn-one span {
-	transition: all 0.3s;
-}
-.btn-one::before {
-	content: '';
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	z-index: 1;
-	opacity: 0;
-	transition: all 0.3s;
-	border-top-width: 1px;
-	border-bottom-width: 1px;
-	border-top-style: solid;
-	border-bottom-style: solid;
-	border-top-color: rgba(255,255,255,0.5);
-	border-bottom-color: rgba(255,255,255,0.5);
-	transform: scale(0.1, 1);
-}
-.btn-one:hover span {
-	letter-spacing: 2px;
-}
-.btn-one:hover::before {
-	opacity: 1;	
-	transform: scale(1, 1);	
-}
-.btn-one::after {
-	content: '';
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	z-index: 1;
-	transition: all 0.3s;
-	background-color: rgba(255,255,255,0.1);
-}
-.btn-one:hover::after {
-	opacity: 0;	
-	transform: scale(0.1, 1);
 }
 
 .btn span {
@@ -470,6 +511,7 @@ form div {
   color: white;
   font-size: 1.5em;
   font-family: 'Gloria Hallelujah', cursive;
+  cursor: pointer;
 }
 
 .register:disabled {
