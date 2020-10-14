@@ -5,13 +5,13 @@ const wikiUrl = "https://en.wikipedia.org/api/rest_v1/page/summary/";
 // Variables for selectors
 const gmList = document.querySelector('#chessGM');
 const btnCheckIt = document.querySelector("#check-it");
-let userBirthdayValue = document.querySelector("#start").value;
+let userBirthdayValue = document.querySelector("#start");
+
 
 // console.log(userBirthdayValue)
 
 //Other global variables
 var today = new Date()
-var todayDate = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate()
 // console.log(todayDate);
 
 //Functions
@@ -23,6 +23,7 @@ async function getGMlist(){
 }
 
 async function checkBirthdayMatch(userBirthday) {
+  console.log(userBirthday, 'value')
     const gmList = await getGMlist();
 
     let arrAllResults = [];
@@ -73,7 +74,7 @@ async function findWikiInfo() {
     let birthdayMatch = [];
     let yearMatch = []
 
-    let arrAllResults = await checkBirthdayMatch(userBirthdayValue);
+    let arrAllResults = await checkBirthdayMatch(userBirthdayValue.value);
 
     // console.log(arrAllResults)
     for (let i = 0; i < arrAllResults.length; i++) {
@@ -197,6 +198,7 @@ async function findWikiInfo() {
     
  async function generateHTML() {
    let result =  await findWikiInfo()
+   
 
    let resultContainer = document.querySelector(".result-container");
     
@@ -212,7 +214,7 @@ async function findWikiInfo() {
             perfectMatch.appendChild(title);
             perfectMatch.appendChild(hr)
 
-         array.map( async player => { 
+         array.reverse().map( async player => { 
           
           let newCard = document.createElement("div");
           perfectMatch.appendChild(newCard);
@@ -303,27 +305,183 @@ async function findWikiInfo() {
   }
 
 
-// generateHTML()
 
-// btnCheckIt.addEventListener('click', (event) => {
-//   event.target.textContent = "Loading...";
-//   // const gmList = findWikiInfo();
-//    Promise.all(gmList)
-//   .then(values => generateHTML(values));
-//   event.target.remove()
-// });
 
-// btnCheckIt.addEventListener('click', (event) => {
-//     // location.reload();
-//     event.target.textContent = "Loading...";
-//     generateHTML();
-//     event.target.textContent ="Check It"
-// });
+async function getTodayBirthday() {
+  let gmList = await getGMlist()
 
-btnCheckIt.addEventListener('click', async (event) => {
+  var todayDate = today.getDate() + "-" + (today.getMonth()+1)
+  let todayDateStr = todayDate.toString()
+  console.log(todayDateStr)
+  
+
+  let todayArr = [];
+
+  for (let i= 0; i< gmList.length; i++) {
+    let gmDay =  gmList[i].born.toString().split("-")[2];
+    let gmMonth =  gmList[i].born.toString().split("-")[1];
+    let gmDayMonth =   gmDay + "-" + gmMonth;
+
+
+      if ( todayDate == gmDayMonth) {
+          todayArr.push(gmList[i]);
+      }
+      
+     
+}
+  return todayArr
+}
+
+getTodayBirthday()
+
+
+
+async function getwikiTodayBirthday() {
+
+  let birthdayToday = await getTodayBirthday();
+  console.log(birthdayToday, "cant see it")
+
+  let birthdayTodayWiki = []
+
+
+      await Promise.all(birthdayToday.map( async data => {
+        // console.log(data.wikiPage.includes("https://en.wikipedia.org/wiki/"))
+       if (data.wikiPage.includes("https://en.wikipedia.org/wiki/")) {
+        //  console.log(data.wikiPage)
+      let wikiDestructuration = await data.wikiPage.split("https://en.wikipedia.org/wiki/");
+      let redirection = await wikiDestructuration[1];
+    
+        let wikiPage = await fetch (wikiUrl + redirection);
+         console.log(wikiPage);
+        let response = await wikiPage.json();
+          // console.log(response)
+       
+          
+        if (typeof response.thumbnail === "object") {
+          var thumbnail = await response.thumbnail.source
+        }
+        else if (typeof response.thumbnail === "string") {
+          var thumbnail = await response.thumbnail
+        }
+
+        else {
+          var thumbnail = "content/img/king.jpg";
+        }
+
+        // let thumbnail = await response.thumbnail.source;
+        let extract = response.extract;
+        // console.log(extract);
+        let name = response.title;
+        let birthdayString = `${data.born.toString().split("-")[2]}/${data.born.toString().split("-")[1]}/${data.born.toString().split("-")[0]}`;
+        let birthdayDate = new Date(data.born);
+        let age = Math.floor((today - birthdayDate)/31557600000);
+        // console.log(name)
+       wikiProfile = {
+           name: name,
+           thumbnail: thumbnail,
+           extract: extract,
+           wikiPage: data.wikiPage,
+           fidePage: data.fidePage,
+           fideId: data.fideId,
+           gender: data.gender,
+           nationality: data.mostRecentFed,
+           birthday: birthdayString,
+           age: age,
+           dead: data.dead,
+       };
+
+       birthdayTodayWiki.push(wikiProfile)
+      }
+       else {
+
+        // console.log(data)
+        let thumbnail = "content/img/king.jpg";
+        let name = data.name;
+        let birthday = `${data.born.toString().split("-")[2]}/${data.born.toString().split("-")[1]}/${data.born.toString().split("-")[0]}`
+        let extract = `${data.name} is a player from ${data.mostRecentFed} who got the Grand Master title in ${data.yearTitle}. (S)he was born the ${birthday}.`;
+        let birthdayString = `${data.born.toString().split("-")[2]}/${data.born.toString().split("-")[1]}/${data.born.toString().split("-")[0]}`;
+        let birthdayDate = new Date(data.born);
+        
+        let age = Math.floor((today - birthdayDate)/31557600000);
+        
+        wikiProfile = {
+          name: name,
+          thumbnail: thumbnail,
+          extract: extract,
+          fidePage: data.fidePage,
+          fideId: data.fideId,
+          gender: data.gender,
+          nationality: data.mostRecentFed,
+          birthday: birthdayString,
+          age : age,
+          dead: data.dead,
+          wikiPage: ""
+      };
+
+      birthdayTodayWiki.push(wikiProfile)}
+    }))
+
+
+    console.log(birthdayTodayWiki, "ICIIIII")
+    return birthdayTodayWiki;
+}
+
+
+getwikiTodayBirthday()
+
+
+
+async function printTodayBirthday() {
+
+  let birthdayToday = await getwikiTodayBirthday();
+
+  let todaySection = document.querySelector(".today-section");
+ 
+  birthdayToday.reverse().map( async (player,index) => {
+    let newA = document.createElement("a")
+    newA.setAttribute("href", `#slide-${await index+1}`)
+    console.log(newA)
+    todaySection.appendChild(newA)
+  }
+  )
+
+  let slidesContainer = document.createElement("div")
+  slidesContainer.setAttribute("class", "slides")
+  todaySection.appendChild(slidesContainer)
+
+
+  
+   birthdayToday.reverse().map(async (player,index) => {
+    
+    let newCard = document.createElement("div");
+    slidesContainer.appendChild(newCard);
+
+
+    newCard.innerHTML = `<div class="today-card" id = "slide-${index+1}">
+  <a href=${await player.wikiPage}><div class="thumbnail-container">
+    <img class="thumbnail" src=${await player.thumbnail} alt="random-GM" />
+  </div></a>
+  <div class="info-gm">
+    <div class="basic-info">
+      <h3 class="gm-name">${await player.name}</h3>
+    </div>
+    <div class="bio">
+      <p>${await player.extract}</p>
+    </div>
+  </div>
+</div>
+</div>`
+  })
+
+}
+
+printTodayBirthday()
+
+
+btnCheckIt.addEventListener('click', (event) => {
   event.target.textContent = "Loading...";
-  let sectionCards = document.querySelector("#result-container");
-  //  sectionCards.innerHTML = ""
-   let loadingData = await generateHTML();
+   let sectionCards = document.querySelector(".result-container");
+   sectionCards.innerHTML = ""
+   generateHTML();
     event.target.textContent = "Check it...";
 });

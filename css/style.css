@@ -10,6 +10,7 @@
 body {
   font-family: 'Gloria Hallelujah', cursive;
   font-size: 10px;
+  background-color: #dddddd;
 }
 
 header {
@@ -21,6 +22,19 @@ h2 {
   line-height: 1.6em;
 }
 
+footer {
+  border-top: maroon dotted;
+  margin-top: 300px;
+  padding: 10px;
+  background-color: rgba(201, 108, 1);
+}
+
+footer a {
+  text-decoration: none;
+  font-size: 1.4em;
+  color: white;
+}
+
 @media (min-width: 700px) {
 .firstmenu {
   display: flex;
@@ -30,17 +44,8 @@ h2 {
     padding: 0;
   }
 }
-/* Home page */
 
-
-#fullpage {
-  background-image: url("../content/img/chesscake.jpeg");
-  background-color: #cccccc; /* Used if the image is unavailable */
-  height: 100vh; /* You must set a specified height */
-  background-position: right; /* Center the image */
-  background-repeat: no-repeat; /* Do not repeat the image */
-  background-size: cover; /* Resize the background image to cover the entire container */
-}
+/* Nav barre */
 
 .first-menu {
   display: flex;
@@ -54,6 +59,7 @@ li {
   padding: 10px;
   
 }
+
 
 .first-menu {
   margin-left: 8px;
@@ -73,38 +79,6 @@ nav a {
   color:  white;
   font-size: 1.3em;
   text-decoration: none;
-}
-
-h1 {
-  font-size: 6em;
-  color: maroon;
-  margin: -20px 20px 20px 0;
-  opacity: 1;
-  text-align: right;
-  line-height: 1.5;
-  padding-top: 50px;
-}
-
-.big-title {
-  background-color: rgba(255,255,255, 0.3);
-}
-
-
-.big-title h2 {
-  text-align: right;
-  width: 50%;
-  position: relative;
-  left:45%;
-  font-size: 2em;
-}
-
-p {
-  color: white
-}
-
-.button a {
-  text-decoration: none;
-  color: black;
 }
 
 i {
@@ -130,16 +104,57 @@ i {
   margin: -12px 10px;
 }
 
-.today-card {
-  display: flex;
-  flex-direction: column;
-  background-color: #30a7c5;
-  margin: 70px;
-  padding: 20px;
-  border-radius: 20px;
-  align-items: center;
+/* Home page */
+
+
+#fullpage {
+  background-image: url("../content/img/chesscake.jpeg");
+  background-color: #cccccc; /* Used if the image is unavailable */
+  height: 100vh; /* You must set a specified height */
+  background-position: right; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+}
+
+
+h1 {
+  font-size: 6em;
+  color: #563232;
+  line-height: 1.5;
+  /* margin: -20px 20px 20px 0;
+  text-align: right;
+  padding-top: 50px; */
+  text-align: center;
+  margin-bottom: 20px;
 
 }
+
+.upper-part {
+  background-color: rgba(202, 162, 101, 0.85);
+  width: 370px;
+  border-radius: 20px;
+  margin: 30px 2px 0px 2px;
+  padding: 20px;
+}
+
+.big-title h2 {
+  text-align: center;
+  /* width: 50%;
+  position: relative;
+  left:45%; */
+  font-size: 2em;
+}
+
+p {
+  color: white
+}
+
+.button a {
+  text-decoration: none;
+  color: black;
+}
+
+
 /* Responsive Ipad */
 
 @media (min-width: 700px) {
@@ -158,9 +173,9 @@ i {
     margin: 60px;
     font-size: 1.5em;
   }
-  .big-title {
+  /* .big-title {
     padding: 30px;
-  }
+  } */
   .button {
     width: 300px;
     height: 60px;
@@ -192,7 +207,8 @@ background-repeat: repeat-x;
   justify-content: center;
   align-items: center;
   height: 100%;
-  padding: 40px
+  padding: 40px;
+  margin: 58px;
 }
 
 .button {
@@ -204,11 +220,11 @@ background-repeat: repeat-x;
   letter-spacing: 1.3px;
   font-weight: 2.5em;
   color: #313133;
-  background: #d19d4f;
-background: linear-gradient(90deg, rgb(230, 183, 129) 0%, rgb(209, 153, 79) 100%);
+  background: #30a7c5;
+background: linear-gradient(90deg, rgb(129, 198, 230) 0%, rgb(79, 168, 209) 100%);
   border: none;
   border-radius: 1000px;
-  box-shadow: 12px 12px 24px rgba(209, 148, 79, 0.64);
+  box-shadow: 12px 12px 24px rgba(79, 179, 209, 0.64);
   transition: all 0.3s ease-in-out 0s;
   cursor: pointer;
   outline: none;
@@ -221,8 +237,8 @@ content: '';
   border-radius: 1000px;
   min-width: calc(300px + 12px);
   min-height: calc(60px + 12px);
-  border: 6px solid #ff9900;
-  box-shadow: 0 0 60px rgba(255, 136, 0, 0.64);
+  border: 6px solid #00a2ff;
+  box-shadow: 0 0 60px rgba(0, 153, 255, 0.64);
   position: absolute;
   top: 50%;
   left: 50%;
@@ -244,7 +260,7 @@ content: '';
   content: '';
   width: 30px; height: 30px;
   border-radius: 100%;
-  border: 6px solid #ff9100;
+  border: 6px solid #30a7c5;
   position: absolute;
   z-index: -1;
   top: 50%;
@@ -311,21 +327,26 @@ margin: 20px
   font-size: 1.4em;
   font-family: 'Gloria Hallelujah', cursive;
   text-align: center;
+  outline: none;
 }
+
 
 /* Bottom part of the page */
 
 .result-container {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
   background-color: #dddddd;
 }
 
+.result-container > div {
+  display: flex;
+  flex-direction: column;
+}
 .result-container h2 {
   margin-left: 15px;
   font-size: 2em;
   margin-top: 10px;
+  width: 360px;
 }
 
 .background p {
@@ -340,6 +361,7 @@ flex-direction: row;
 justify-content: space-evenly;
 height: auto;
 }
+
 
 .uploaded-text {
   background-color: rgba(202, 162, 101, 0.85);
@@ -421,8 +443,6 @@ background-color: #30a7c5;
 margin: 8px;
 border-radius: 20px;
 display: flex;
-flex-direction: row;
-align-items: center;
 width: 360px;
 height: auto;
 }
@@ -449,7 +469,7 @@ object-fit: cover;
 .info-gm {
   display: flex;
   flex-direction: column;
-  margin-right: 20px;
+  margin: 20px 10px 20px 0px;
   height: auto
 }
 
@@ -458,7 +478,7 @@ h3{
 }
 
 .bio p {
-  font-size: 1.1em;
+  font-size: 1.3em;
 }
 
 .btn span {
@@ -596,18 +616,7 @@ form div {
   padding: 30px 0;
 }
 
-footer {
-  border-top: maroon dotted;
-  margin-top: 40px;
-  padding: 10px;
-  background-color: rgba(201, 108, 1);
-}
 
-footer a {
-  text-decoration: none;
-  font-size: 1.4em;
-  color: white;
-}
 
 @media (min-width: 700px) {
 
@@ -623,3 +632,7 @@ footer a {
     margin: 40px 40%
   }
 }
+
+
+/* Carussel */
+
