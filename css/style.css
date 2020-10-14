@@ -17,6 +17,9 @@ header {
   flex-direction: column;
 }
 
+h2 {
+  line-height: 1.6em;
+}
 
 @media (min-width: 700px) {
 .firstmenu {
@@ -213,7 +216,7 @@ background: linear-gradient(90deg, rgb(230, 183, 129) 0%, rgb(209, 153, 79) 100%
   padding: 10px;
   }
 
-button::before {
+.button::before {
 content: '';
   border-radius: 1000px;
   min-width: calc(300px + 12px);
@@ -233,11 +236,11 @@ content: '';
   transform: translateY(-6px);
 }
 
-button:hover::before, button:focus::before {
+.button:hover::before, button:focus::before {
   opacity: 1;
 }
 
-button::after {
+.button::after {
   content: '';
   width: 30px; height: 30px;
   border-radius: 100%;
@@ -251,7 +254,7 @@ button::after {
   
 }
 
-button:hover::after, button:focus::after {
+.button:hover::after, button:focus::after {
   animation: none;
   display: none;
   border: none;
@@ -314,10 +317,9 @@ margin: 20px
 
 .result-container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
   background-color: #dddddd;
-  height: 100%;
-  width: 100%;
 }
 
 .result-container h2 {
@@ -336,6 +338,7 @@ display: flex;
 flex-wrap: wrap;
 flex-direction: row;
 justify-content: space-evenly;
+height: auto;
 }
 
 .uploaded-text {
@@ -421,6 +424,7 @@ display: flex;
 flex-direction: row;
 align-items: center;
 width: 360px;
+height: auto;
 }
 
 .basic-info {
@@ -446,7 +450,7 @@ object-fit: cover;
   display: flex;
   flex-direction: column;
   margin-right: 20px;
-  height: 225px
+  height: auto
 }
 
 h3{
@@ -461,6 +465,20 @@ h3{
   font-size: 2em;
 }
 
+.birthday-number {
+  font-size: 2em;
+  color: rgba(255, 136, 0);
+}
+
+.result-container hr {
+  color: rgba(255, 136, 0) ;
+  display: block;
+  margin: 1.7em 1.2em;
+  border-style: solid;
+  border-width: 4px;
+  width: 20%;
+  border-radius: 5px 0;
+}
 
 
 /* Sign Up Sign In */

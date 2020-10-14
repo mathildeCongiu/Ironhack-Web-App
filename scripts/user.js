@@ -2,10 +2,9 @@
 
 
 class User {
-  constructor(name, pokemon, type, email, password) {
+  constructor(name, birthday, email, password) {
     this.name = name;
-    this.pokemon = pokemon;
-    this.type = type;
+    this.birthday = birthday;
     this.email = email;
     this.password = password;
   }

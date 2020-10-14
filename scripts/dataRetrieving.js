@@ -7,13 +7,18 @@ const gmList = document.querySelector('#chessGM');
 const btnCheckIt = document.querySelector("#check-it");
 let userBirthdayValue = document.querySelector("#start").value;
 
-console.log(userBirthdayValue)
+// console.log(userBirthdayValue)
+
+//Other global variables
+var today = new Date()
+var todayDate = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate()
+// console.log(todayDate);
 
 //Functions
 async function getGMlist(){
     const gmResponse = await fetch(gmObjUrl);
     const gmJSON = await gmResponse.json();
-    // console.log(gmJSON, "Response GM")
+    console.log(gmJSON, "Response GM");
     return gmJSON;
 }
 
@@ -54,7 +59,7 @@ async function checkBirthdayMatch(userBirthday) {
     arrAllResults.push(perfectResultMatchArr);
     arrAllResults.push(birthdayMatchArr);
     arrAllResults.push(yearMatchArr);
-    // console.log(arrAllResults);
+    console.log(arrAllResults);
 
     return arrAllResults;
 }
@@ -101,12 +106,22 @@ async function findWikiInfo() {
           let extract = response.extract;
           // console.log(extract);
           let name = response.title;
-
+          let birthdayString = `${data.born.toString().split("-")[2]}/${data.born.toString().split("-")[1]}/${data.born.toString().split("-")[0]}`;
+          let birthdayDate = new Date(data.born);
+          let age = Math.floor((today - birthdayDate)/31557600000);
           // console.log(name)
-         wikiProfile= {
+         wikiProfile = {
              name: name,
              thumbnail: thumbnail,
-             extract: extract
+             extract: extract,
+             wikiPage: data.wikiPage,
+             fidePage: data.fidePage,
+             fideId: data.fideId,
+             gender: data.gender,
+             nationality: data.mostRecentFed,
+             birthday: birthdayString,
+             age: age,
+             dead: data.dead,
          };
 
           // console.log(wikiProfile, "AHORA ES LA SIGUIENTE COMPROBACION")
@@ -129,12 +144,25 @@ async function findWikiInfo() {
           // console.log(data)
           let thumbnail = "content/img/king.jpg";
           let name = data.name;
-          let extract = `${data.name} is a player from ${data.mostRecentFed} who got the Grand Master title in ${data.yearTitle}`;
-
+          let birthday = `${data.born.toString().split("-")[2]}/${data.born.toString().split("-")[1]}/${data.born.toString().split("-")[0]}`
+          let extract = `${data.name} is a player from ${data.mostRecentFed} who got the Grand Master title in ${data.yearTitle}. (S)he was born the ${birthday}.`;
+          let birthdayString = `${data.born.toString().split("-")[2]}/${data.born.toString().split("-")[1]}/${data.born.toString().split("-")[0]}`;
+          let birthdayDate = new Date(data.born);
+          
+          let age = Math.floor((today - birthdayDate)/31557600000);
+          
           wikiProfile = {
             name: name,
-          thumbnail: thumbnail,
-            extract: extract
+            thumbnail: thumbnail,
+            extract: extract,
+            fidePage: data.fidePage,
+            fideId: data.fideId,
+            gender: data.gender,
+            nationality: data.mostRecentFed,
+            birthday: birthdayString,
+            age : age,
+            dead: data.dead,
+            wikiPage: ""
         };
 
           if (i=== 0) {
@@ -162,11 +190,9 @@ async function findWikiInfo() {
 // wikiProfiles[0].push(perfectMatch)
     wikiProfiles = [perfectMatch, birthdayMatch, yearMatch];
      
-        // console.log(wikiProfiles, "check if same number of elements")
+        console.log(wikiProfiles, "check if same number of elements")
         return wikiProfiles;
     }
-
-
 
     
  async function generateHTML() {
@@ -181,17 +207,20 @@ async function findWikiInfo() {
             let perfectMatch = document.createElement("div")
             resultContainer.appendChild(perfectMatch)
             let title = document.createElement("h2");
-            title.innerHTML = "Someone is born the exact same day as you";
+            let hr = document.createElement("hr")
+            title.innerHTML = "Someone was born the exact same day as you";
             perfectMatch.appendChild(title);
+            perfectMatch.appendChild(hr)
 
          array.map( async player => { 
           
           let newCard = document.createElement("div");
           perfectMatch.appendChild(newCard);
               newCard.innerHTML = `<div class="card">
-          <div class="thumbnail-container">
-            <img class="thumbnail" src=${await player.thumbnail} alt="random-GM" />
-          </div>
+              <a href=${await player.wikiPage}><div class="thumbnail-container">
+          <img class="thumbnail" src=${await player.thumbnail} alt="random-GM" />
+        
+          </div></a>
           <div class="info-gm">
             <div class="basic-info">
               <h3 class="gm-name">${await player.name}</h3>
@@ -212,17 +241,20 @@ async function findWikiInfo() {
             let birthdayMatch = document.createElement("div")
             resultContainer.appendChild(birthdayMatch)
             let title = document.createElement("h2");
-            title.innerHTML = `${array.length} GMs celebrate the same birthday as you`;
+            let hr = document.createElement("hr")
+      
+            title.innerHTML = `<span class="birthday-number">${array.length} </span> GMs celebrate the same birthday as you`;
             birthdayMatch.appendChild(title);
+            birthdayMatch.appendChild(hr)
 
          array.map( async player => { 
           
           let newCard = document.createElement("div");
           birthdayMatch.appendChild(newCard);
               newCard.innerHTML = `<div class="card">
-          <div class="thumbnail-container">
-            <img class="thumbnail" src=${await player.thumbnail} alt="random-GM" />
-          </div>
+              <a href=${await player.wikiPage}><div class="thumbnail-container">
+           <img class="thumbnail" src=${await player.thumbnail} alt="random-GM" />
+          </div></a>
           <div class="info-gm">
             <div class="basic-info">
               <h3 class="gm-name">${await player.name}</h3>
@@ -241,17 +273,19 @@ async function findWikiInfo() {
             let yearMatch = document.createElement("div")
             resultContainer.appendChild(yearMatch)
             let title = document.createElement("h2");
-            title.innerHTML = `${array.length} GMs were born the same year as you`;
+            let hr = document.createElement("hr")
+            title.innerHTML = `<span class="birthday-number">${array.length} </span> GMs were born the same year as you`;
             yearMatch.appendChild(title);
+            yearMatch.appendChild(hr)
 
          array.map( async player => { 
           
           let newCard = document.createElement("div");
           yearMatch.appendChild(newCard);
               newCard.innerHTML = `<div class="card">
-          <div class="thumbnail-container">
+              <a href=${await player.wikiPage}><div class="thumbnail-container">
             <img class="thumbnail" src=${await player.thumbnail} alt="random-GM" />
-          </div>
+          </div></a>
           <div class="info-gm">
             <div class="basic-info">
               <h3 class="gm-name">${await player.name}</h3>
@@ -279,8 +313,17 @@ async function findWikiInfo() {
 //   event.target.remove()
 // });
 
-btnCheckIt.addEventListener('click', (event) => {
-    event.target.textContent = "Loading...";
-    generateHTML();
-    event.target.textContent ="Check It"
+// btnCheckIt.addEventListener('click', (event) => {
+//     // location.reload();
+//     event.target.textContent = "Loading...";
+//     generateHTML();
+//     event.target.textContent ="Check It"
+// });
+
+btnCheckIt.addEventListener('click', async (event) => {
+  event.target.textContent = "Loading...";
+  let sectionCards = document.querySelector("#result-container");
+  //  sectionCards.innerHTML = ""
+   let loadingData = await generateHTML();
+    event.target.textContent = "Check it...";
 });
