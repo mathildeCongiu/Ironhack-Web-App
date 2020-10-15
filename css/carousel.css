@@ -1,9 +1,9 @@
 
 .slider {
-  width: 100%;
+  width: 95vw;
   text-align: center;
   overflow: hidden;
-  margin: 20px;
+  margin: 15px 5px;
 }
 
 .slides {
@@ -17,10 +17,10 @@
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
   
-  /*
+  
   scroll-snap-points-x: repeat(300px);
   scroll-snap-type: mandatory;
-  */
+ 
 }
 .slides::-webkit-scrollbar {
   width: 10px;
@@ -36,7 +36,7 @@
 .slides > div {
   scroll-snap-align: start;
   flex-shrink: 0;
-  width: 330px;
+  width: 95vw;
   height: auto;
   margin-right: 10px;
   border-radius: 10px;
@@ -77,7 +77,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 400px;
+  width: 500px;
   /* height: 100%; */
 } 
 
@@ -85,12 +85,12 @@
   display: inline-flex;
   width: 1.5rem;
   height: 1.5rem;
-  background: green;
+  background: rgb(221, 119, 3);
   text-decoration: none;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  margin: 0 0 0.5rem 0;
+  margin: 0.5rem 0;
   position: relative;
 }
 
@@ -111,7 +111,10 @@
     align-items: center;
   }
 
-
+.today-card .thumbnail {
+  width: auto;
+  height: 40vh;
+}
 
 
 
