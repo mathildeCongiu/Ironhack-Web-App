@@ -72,7 +72,7 @@ async function findWikiInfo() {
 
     let perfectMatch = [];
     let birthdayMatch = [];
-    let yearMatch = []
+    let yearMatch = [];
 
     let arrAllResults = await checkBirthdayMatch(userBirthdayValue.value);
 
@@ -148,9 +148,10 @@ async function findWikiInfo() {
 
           // console.log(data)
           let thumbnail = "content/img/king.jpg";
-          let name = data.name;
+          let name = data.name.split(",")[1] + " " + data.name.split(",")[0]
+          // let name = data.name;
           let birthday = `${data.born.toString().split("-")[2]}/${data.born.toString().split("-")[1]}/${data.born.toString().split("-")[0]}`
-          let extract = `${data.name} is a player from ${data.mostRecentFed} who got the Grand Master title in ${data.yearTitle}. (S)he was born the ${birthday}.`;
+          let extract = `${name} is a player from ${data.mostRecentFed}, born on ${birthday}, who got the Grand Master title in ${data.yearTitle}.`
           let birthdayString = `${data.born.toString().split("-")[2]}/${data.born.toString().split("-")[1]}/${data.born.toString().split("-")[0]}`;
           let birthdayDate = new Date(data.born);
           
@@ -225,7 +226,7 @@ async function findWikiInfo() {
             let divCardsContainer = document.createElement("div");
             perfectMatch.appendChild(divCardsContainer)
 
-         array.reverse().map( async player => { 
+         array.map( async player => { 
           
           let newCard = document.createElement("div");
           divCardsContainer.appendChild(newCard);
@@ -399,10 +400,11 @@ async function getwikiTodayBirthday() {
         // let extract = response.extract;
 
         let birthday = `${data.born.toString().split("-")[2]}/${data.born.toString().split("-")[1]}/${data.born.toString().split("-")[0]}`
-        let extract = `${data.name} is a player from ${data.mostRecentFed} who got the Grand Master title in ${data.yearTitle}. (S)he was born the ${birthday}.`;
-       
+          
         // console.log(extract);
         let name = response.title;
+        let extract = `${name} is a player from ${data.mostRecentFed}, born on ${birthday}, who got the Grand Master title in ${data.yearTitle}.`
+       
         let birthdayString = `${data.born.toString().split("-")[2]}/${data.born.toString().split("-")[1]}/${data.born.toString().split("-")[0]}`;
         let birthdayDate = new Date(data.born);
         let age = Math.floor((today - birthdayDate)/31557600000);
@@ -427,9 +429,9 @@ async function getwikiTodayBirthday() {
 
         // console.log(data)
         let thumbnail = "content/img/king.jpg";
-        let name = data.name;
+        let name = data.name.split(",")[1] + " " + data.name.split(",")[0]
         let birthday = `${data.born.toString().split("-")[2]}/${data.born.toString().split("-")[1]}/${data.born.toString().split("-")[0]}`
-        let extract = `${data.name} is a player from ${data.mostRecentFed} who got the Grand Master title in ${data.yearTitle}. (S)he was born the ${birthday}.`;
+        let extract = `${name} is a player from ${data.mostRecentFed}, born on ${birthday}, who got the Grand Master title in ${data.yearTitle}.`
         let birthdayString = `${data.born.toString().split("-")[2]}/${data.born.toString().split("-")[1]}/${data.born.toString().split("-")[0]}`;
         let birthdayDate = new Date(data.born);
         
@@ -468,7 +470,7 @@ async function printTodayBirthday() {
 
   let todaySection = document.querySelector(".today-section");
  
-  birthdayToday.reverse().map( async (player,index) => {
+  birthdayToday.map( async (player,index) => {
     let newA = document.createElement("a")
     newA.setAttribute("href", `#slide-${await index+1}`)
     console.log(newA)
@@ -482,7 +484,7 @@ async function printTodayBirthday() {
 
 
   
-   birthdayToday.reverse().map(async (player,index) => {
+   birthdayToday.map(async (player,index) => {
     
     let newCard = document.createElement("div");
     slidesContainer.appendChild(newCard);

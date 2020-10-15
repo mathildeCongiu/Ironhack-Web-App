@@ -55,6 +55,10 @@ footer a {
   width: 100%;
 }
 
+.first-menu a {
+  padding: 0px 5px;
+}
+
 li {
   padding: 10px;
   
@@ -121,11 +125,7 @@ i {
   .first-menu {
     font-size: 1.1em;
   }
-/* 
-  .wobble-hor-bottom {
-    padding: 0 40px;
 
-  } */
 }
 @media screen and (min-width: 950px) {
   .first-menu {
@@ -133,6 +133,10 @@ i {
     width: 100%;
     font-size: 1.2em;
     margin-right: 20px;
+  }
+
+.nav-totale .material-icons {
+    display: none;
   }
 
   .logo {
@@ -724,7 +728,10 @@ form div {
   padding: 30px 0;
 }
 
-
+.form-wrapper p {
+  margin: 10px;
+  font-size: 3vw;
+}
 
 @media (min-width: 700px) {
 
