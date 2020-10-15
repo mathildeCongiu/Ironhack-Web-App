@@ -617,34 +617,39 @@ margin: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 40px 60px;
+  margin: 10px auto;
   background-color: #30a7c5;
   border-radius: 30px;
   padding: 20px;
   box-shadow: #313133;
+  width: 80vw;
 }
 
 .signup h2, .login h2{
-font-size: 3em;
+font-size: 6vw;
+margin-bottom: 10px;
 }
 
 .form-wrapper form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 20px;
+  margin-left: 20px;
 }
 
 .form-wrapper form input {
   margin: 20px;
+  font-size: 2.5vw;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .signup-form input, .login input {
-width: 140px;
-height: 30px;
+width: 50vw;
+height: 5vh;;
 border-radius: 5px;
 padding: 10px;
 border: none;
+font-size: 3.5vw;
 }
 
 
@@ -655,13 +660,13 @@ form div {
 }
 
 .register {
-  width: 150px;
-  height: 45px;
+  width: 35vw;
+  height: 7vh;
   border-radius: 20px;
   background-color: rgba(255, 136, 0);
-  margin: 20px;
+  margin: 20px 20px 20px 0;
   color: white;
-  font-size: 1.5em;
+  font-size: 4vw;
   font-family: 'Gloria Hallelujah', cursive;
   cursor: pointer;
   border: none;
@@ -672,17 +677,48 @@ form div {
   color:  rgba(255,255,255, 0.75);;
 }
 
-@media (min-width: 700px) {
+/* .form-wrapper p {
+  margin: 10px;
+  font-size: 3vw;
+} */
 
-  .signup, .login {
-    margin: 40px 30%;
-  }
-}
 
 @media (min-width: 950px) {
 
+  .signup h2, .login h2 {
+    font-size: 50px;
+  }
+
+  .signup-form input, .login input {
+    width: 30vw;
+    height: 5vh;;
+    border-radius: 5px;
+    padding: 10px;
+    border: none;
+    font-size: 2vw;
+    }
+
+    .register {
+      width: 18vw;
+      height: 8vh;
+      background-color: rgba(255, 136, 0);
+      font-size: 2vw;
+    }
+    
+    .form-wrapper form input {
+      margin: 20px;
+      font-size: 1.5vw;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+
+    .fmessage-container {
+      margin: 10px;
+      font-size: 1.8vw;
+    }
+
+
   .signup, .login {
-    margin: 40px 40%
+    width: 800px;
   }
 }
 
@@ -725,28 +761,18 @@ form div {
 
 .transparency {
   background-color: rgba(255,255,255, 0.35);
+  height: 100vh;
   padding: 30px 0;
 }
 
-.form-wrapper p {
-  margin: 10px;
-  font-size: 3vw;
+
+@media screen and (min-width: 700px) {
+.qa p {
+  font-size: 2em;
+}
 }
 
-@media (min-width: 700px) {
 
-  .transparency {
-    width: 350px;
-    margin: 0 40%;
-  }
-}
-
-@media (min-width: 950px) {
-
-  .signup, .login {
-    margin: 40px 40%
-  }
-}
 
 
 /* Animation */
