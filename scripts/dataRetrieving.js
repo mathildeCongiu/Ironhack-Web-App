@@ -167,7 +167,7 @@ async function findWikiInfo() {
             birthday: birthdayString,
             age : age,
             dead: data.dead,
-            wikiPage: ""
+            wikiPage: data.fidePage
         };
 
           if (i=== 0) {
@@ -446,7 +446,7 @@ async function getwikiTodayBirthday() {
           birthday: birthdayString,
           age : age,
           dead: data.dead,
-          wikiPage: ""
+          wikiPage: data.fidePage
       };
 
       birthdayTodayWiki.push(wikiProfile)}
