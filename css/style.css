@@ -10,7 +10,7 @@
 body {
   font-family: 'Gloria Hallelujah', cursive;
   font-size: 10px;
-  background-color: #dddddd;
+  background-color: #e9e9e9;
 }
 
 header {
@@ -81,6 +81,11 @@ nav a {
   text-decoration: none;
 }
 
+.logo {
+  height:40px;
+  display:none;
+}
+
 i {
   color: white;
   margin: none;
@@ -101,7 +106,45 @@ i {
 
 .mobile-menu li {
   padding: none;
-  margin: -12px 10px;
+  margin: -12px 4px -12px -4px;
+}
+
+.nav-totale {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+@media screen and (min-width: 700px) {
+  .first-menu {
+    font-size: 1.1em;
+  }
+/* 
+  .wobble-hor-bottom {
+    padding: 0 40px;
+
+  } */
+}
+@media screen and (min-width: 950px) {
+  .first-menu {
+    justify-content: flex-end;
+    width: 100%;
+    font-size: 1.2em;
+    margin-right: 20px;
+  }
+
+  .logo {
+    height: 45px;
+    display:inline-flex;
+    margin-top: 7px;
+  }
+/* 
+  .wobble-hor-bottom {
+    padding: 0 40px;
+
+  } */
 }
 
 /* Home page */
@@ -150,7 +193,7 @@ p {
 }
 
 .today-section h2 {
-  color: rgb(221, 119, 3);
+  color: #dd7703;
   font-size: 8vw;
   padding: 3% 4% 0 1% ;
 }
@@ -597,6 +640,7 @@ width: 140px;
 height: 30px;
 border-radius: 5px;
 padding: 10px;
+border: none;
 }
 
 
@@ -616,6 +660,7 @@ form div {
   font-size: 1.5em;
   font-family: 'Gloria Hallelujah', cursive;
   cursor: pointer;
+  border: none;
 }
 
 .register:disabled {
@@ -626,7 +671,7 @@ form div {
 @media (min-width: 700px) {
 
   .signup, .login {
-    margin: 40px 30%
+    margin: 40px 30%;
   }
 }
 
