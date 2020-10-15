@@ -23,7 +23,7 @@ async function getGMlist(){
 }
 
 async function checkBirthdayMatch(userBirthday) {
-  console.log(userBirthday, 'value')
+  console.log(userBirthday, 'value');
     const gmList = await getGMlist();
 
     let arrAllResults = [];
@@ -215,13 +215,22 @@ async function findWikiInfo() {
             let title = document.createElement("h2");
             let hr = document.createElement("hr")
             title.innerHTML = "Someone was born the exact same day as you";
-            perfectMatch.appendChild(title);
-            perfectMatch.appendChild(hr)
+
+            let divTitle = document.createElement("div");
+            divTitle.setAttribute("class", "div-title")
+            perfectMatch.appendChild(divTitle);
+            divTitle.appendChild(title);
+            divTitle.appendChild(hr)
+
+            let divCardsContainer = document.createElement("div");
+            perfectMatch.appendChild(divCardsContainer)
 
          array.reverse().map( async player => { 
           
           let newCard = document.createElement("div");
-          perfectMatch.appendChild(newCard);
+          divCardsContainer.appendChild(newCard);
+          divCardsContainer.setAttribute("class","cards-container");
+
               newCard.innerHTML = `<div class="card">
               <a href=${await player.wikiPage}><div class="thumbnail-container">
           <img class="thumbnail" src=${await player.thumbnail} alt="random-GM" />
@@ -250,13 +259,20 @@ async function findWikiInfo() {
             let hr = document.createElement("hr")
       
             title.innerHTML = `<span class="birthday-number">${array.length} </span> GMs celebrate the same birthday as you`;
-            birthdayMatch.appendChild(title);
-            birthdayMatch.appendChild(hr)
+            let divTitle = document.createElement("div");
+            divTitle.setAttribute("class", "div-title");
+            birthdayMatch.appendChild(divTitle);
+            divTitle.appendChild(title);
+            divTitle.appendChild(hr)
+
+            let divCardsContainer = document.createElement("div");
+            birthdayMatch.appendChild(divCardsContainer);
+            divCardsContainer.setAttribute("class","cards-container");
 
          array.map( async player => { 
           
           let newCard = document.createElement("div");
-          birthdayMatch.appendChild(newCard);
+          divCardsContainer.appendChild(newCard);
               newCard.innerHTML = `<div class="card">
               <a href=${await player.wikiPage}><div class="thumbnail-container">
            <img class="thumbnail" src=${await player.thumbnail} alt="random-GM" />
@@ -281,13 +297,20 @@ async function findWikiInfo() {
             let title = document.createElement("h2");
             let hr = document.createElement("hr")
             title.innerHTML = `<span class="birthday-number">${array.length} </span> GMs were born the same year as you`;
-            yearMatch.appendChild(title);
-            yearMatch.appendChild(hr)
+            let divTitle = document.createElement("div")
+            divTitle.setAttribute("class", "div-title")
+            yearMatch.appendChild(divTitle);
+            divTitle.appendChild(title);
+            divTitle.appendChild(hr)
+
+            let divCardsContainer = document.createElement("div");
+            yearMatch.appendChild(divCardsContainer);
+            divCardsContainer.setAttribute("class","cards-container");
 
          array.map( async player => { 
           
           let newCard = document.createElement("div");
-          yearMatch.appendChild(newCard);
+          divCardsContainer.appendChild(newCard);
               newCard.innerHTML = `<div class="card">
               <a href=${await player.wikiPage}><div class="thumbnail-container">
             <img class="thumbnail" src=${await player.thumbnail} alt="random-GM" />

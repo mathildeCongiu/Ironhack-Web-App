@@ -224,7 +224,7 @@ p {
   }
 
   .today-section h2 {
-    font-size: 4vw;
+    font-size: 3.5vw;
     padding-top: 2%;
     margin-top: 5%;
   }
@@ -240,19 +240,13 @@ p {
   }
   
   .today-section .basic-info {
-    font-size: 2.5vw;
+    font-size: 1.9vw;
   }
   .today-section .bio {
-    font-size: 1.5vw;
+    font-size: 1.1vw;
   }
 
-  .today-card {
-    width: 50%;
-  }
 
-  .slider {
-    width:70vw
-  }
 }
 
 /* Check button with animation */
@@ -351,57 +345,99 @@ footer ul {
   list-style: none;
 }
 
-/* Check it section */
+/* CHECK IT SECTION */
 .background {
   background-image: url("../content/img/chessdate.jpeg");
   background-color: #cccccc; /* Used if the image is unavailable */
   height: 50vh; /* You must set a specified height */
+  width: 100vw;
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover; /* Resize the background image to cover the entire container */
-display: flex;
-flex-direction: row;
-justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .calendar {
   display: flex;
   margin: 15px 20px;
   flex-direction: column;
+  text-align: center;
 }
 
 .calendar label {
-font-size: 2.7em;  
+font-size: 5vw;  
 color: white;
-line-height: 1.8;
+line-height: 1.6;
 margin: 20px
 }
 
 .calendar input {
-  height: 30px;
-  font-size: 1.4em;
+  /* height: 5vh; */
+  font-size: 3.5vw;
   font-family: 'Gloria Hallelujah', cursive;
   text-align: center;
   outline: none;
+  border: none;
 }
 
+.uploaded-text {
+  background-color: rgba(202, 162, 101, 0.85);
+  padding:20px;
+  font-size: 2.5vw;
+  line-height: 5.5vh;
+  width: 50vw;
+
+
+}
+
+/* Submit button */
+.btn {
+	line-height: 50px;
+	height: 50px;
+	text-align: center;
+	width: 150px;
+	cursor: pointer;
+}
+
+.box-1 { 
+  background-color: #30a7c5; 
+  color:white;
+  height: 10vh;
+
+}
+
+#check-it {
+  font-size: 30px;
+  padding: 1vh 0;
+  margin: 0 10%;
+  
+}
 
 /* Bottom part of the page */
 
 .result-container {
   display: flex;
+  flex-direction: column;
   background-color: #dddddd;
 }
 
-.result-container > div {
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+/* .result-container > div {
   display: flex;
   flex-direction: column;
-}
+} */
+
 .result-container h2 {
-  margin-left: 15px;
-  font-size: 2em;
-  margin-top: 10px;
-  width: 360px;
+  /* margin-left: 15px; */
+  font-size: 6vw;
+  /* margin-top: 10px; */
+  /* width: 360px; */
 }
 
 .background p {
@@ -418,58 +454,94 @@ justify-content: space-evenly;
 }
 
 
-.uploaded-text {
-  background-color: rgba(202, 162, 101, 0.85);
-  padding:30px;
-  width: 80%
+.div-title {
+margin: 20px;
 }
 
 
-#check-it span{
-  color:white;
-}
+.card {
+  background-color: #30a7c5;
+  margin: 8px;
+  border-radius: 20px;
+  display: flex;
+  width: 360px;
+  /* height: auto; */
+  }
+  
+  .basic-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  .thumbnail-container {
+    margin: 15px;
+  }
+  
+  .thumbnail {
+  border-radius: 10px;
+  height:226px;
+  width: 150px;
+  object-fit: cover;
+  
+  }
+  
+  .info-gm {
+    display: flex;
+    flex-direction: column;
+    margin: 20px 10px 20px 0px;
+    /* height: auto */
+  }
+  
+  h3{
+    font-size: 1.4em;
+  }
+  
+  .bio p {
+    font-size: 1.3em;
+  }
+  
+  .btn span {
+    font-size: 2em;
+  }
+  
+  .birthday-number {
+    font-size: 2em;
+    color: rgba(255, 136, 0);
+  }
+  
+  .result-container hr {
+    color: rgba(255, 136, 0) ;
+    display: block;
+    margin: 1.7em 0;
+    border-style: solid;
+    border-width: 4px;
+    width: 20%;
+    border-radius: 5px 0;
+  }
 
+  
 @media (min-width : 750px) {
-  .uploaded-text {
-    background-color: rgba(202, 162, 101, 0.85);
-    padding:30px;
-    width: 40%;
-  }
-
-  .uploaded-text p {
-    font-size: 2.8em;
-  }
-
   #check-it {
-    margin: 20px 24%;
-    height: 60px;
-    font-size: 10vw;
+    margin: 0 30%;
   }
+  .div-title h2 {
+    font-size: 3.5vw;
 
-  .calendar label {
-    font-size: 3em;
-  }
-
-  .calendar input {
-    height: 50px;
-    font-size: 1.8em;
   }
 }
 
 @media (min-width : 900px) {
   .uploaded-text {
-    background-color: rgba(202, 162, 101, 0.85);
-    padding:30px;
-    width: 40%;
-  }
-
-  .uploaded-text p {
-    font-size: 4em;
+    font-size: 1.7vw;
+    line-height: 4.5vw;
   }
 
   #check-it {
     margin: 20px 37%;
     height: 60px;
+    font-size: 30px;
   }
 
   .calendar label {
@@ -478,82 +550,18 @@ justify-content: space-evenly;
 
   .calendar input {
     height: 70px;
-    font-size: 2.4em;
+    font-size: 3em;
+  }
+.div-title {
+  margin: 30px 40px;
+}
+  .div-title h2 {
+    font-size: 2vw;
+
   }
   
 }
-/* Submit button */
-.box-1 { background-color: #30a7c5; }
 
-.btn {
-	line-height: 50px;
-	height: 50px;
-	text-align: center;
-	width: 150px;
-	cursor: pointer;
-}
-
-.card {
-background-color: #30a7c5;
-margin: 8px;
-border-radius: 20px;
-display: flex;
-width: 360px;
-/* height: auto; */
-}
-
-.basic-info {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin-bottom: 10px;
-}
-
-.thumbnail-container {
-  margin: 15px;
-}
-
-.thumbnail {
-border-radius: 10px;
-height:226px;
-width: 150px;
-object-fit: cover;
-
-}
-
-.info-gm {
-  display: flex;
-  flex-direction: column;
-  margin: 20px 10px 20px 0px;
-  /* height: auto */
-}
-
-h3{
-  font-size: 1.4em;
-}
-
-.bio p {
-  font-size: 1.3em;
-}
-
-.btn span {
-  font-size: 2em;
-}
-
-.birthday-number {
-  font-size: 2em;
-  color: rgba(255, 136, 0);
-}
-
-.result-container hr {
-  color: rgba(255, 136, 0) ;
-  display: block;
-  margin: 1.7em 1.2em;
-  border-style: solid;
-  border-width: 4px;
-  width: 20%;
-  border-radius: 5px 0;
-}
 
 
 /* Sign Up Sign In */

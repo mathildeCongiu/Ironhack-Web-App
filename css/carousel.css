@@ -115,7 +115,35 @@
   width: auto;
   height: 40vh;
 }
+@media screen and (min-width: 950px) {
+  /* .slider {
+    width:70vw
+  } */
 
+  .slides > div {
+    scroll-snap-align: start;
+    flex-shrink: 0;
+    width: 40vw;
+    height: auto;
+    margin-right: 10px;
+    border-radius: 10px;
+    /* background: #eee; */
+    transform-origin: center center;
+    transform: scale(1);
+    transition: transform 0.5s;
+    position: relative;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* font-size: 100px; */
+  }
+  
+  
+  .slides > div:target {
+  /*   transform: scale(0.8); */
+  }
+}
 
 
 /* Don't need button navigation */
@@ -124,3 +152,5 @@
     display: none;
   }
 }
+
+
