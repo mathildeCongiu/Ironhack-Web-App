@@ -121,6 +121,10 @@ i {
   width: 100%;
 }
 
+.logo-container {
+  display: none;
+}
+
 
 @media screen and (min-width: 700px) {
   .first-menu {
@@ -135,9 +139,8 @@ i {
     font-size: 1.2em;
     margin-right: 20px;
   }
-
-.nav-totale .material-icons {
-    display: none;
+  .logo-container {
+    display: block;
   }
 
   .logo {
@@ -225,6 +228,7 @@ p {
 .today-section .bio {
   font-size: 2.5vw;
 }
+
 
 /* Responsive Ipad */
 
