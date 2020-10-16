@@ -2,7 +2,7 @@
 
 
 
-![logocomplete](/content/img/logocomplete.png)
+![logocomplete](/content/img/logocompletecolor.png)
 
 # Happy GM to you!
 
