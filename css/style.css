@@ -257,7 +257,7 @@ p {
   .upper-part {
     background-color: rgba(202, 162, 101, 0.85);
     width: 70vw;
-    margin: 2% 12% 8%;
+    margin: 2% auto 8%;
     padding: 20px;
   }
 
@@ -640,7 +640,7 @@ margin-bottom: 10px;
 .form-wrapper form input {
   margin: 20px;
   font-size: 2.5vw;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+
 }
 
 .signup-form input, .login input {
@@ -650,6 +650,7 @@ border-radius: 5px;
 padding: 10px;
 border: none;
 font-size: 3.5vw;
+  font-family: 'Gloria Hallelujah', cursive;
 }
 
 
@@ -691,11 +692,10 @@ form div {
 
   .signup-form input, .login input {
     width: 30vw;
-    height: 5vh;;
+    height: 5vh;
     border-radius: 5px;
     padding: 10px;
     border: none;
-    font-size: 2vw;
     }
 
     .register {
@@ -707,13 +707,13 @@ form div {
     
     .form-wrapper form input {
       margin: 20px;
-      font-size: 1.5vw;
-      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      font-size: 1.1vw;
+      /* font-family: Verdana, Geneva, Tahoma, sans-serif; */
     }
 
-    .fmessage-container {
+    .message-container {
       margin: 10px;
-      font-size: 1.8vw;
+      font-size: 1vw;
     }
 
 
