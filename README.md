@@ -2,7 +2,7 @@
 
 
 
-![logocomplete](/Users/mathildecongiu/Documents/code/ironhack/Projects/Ironhack Web App/content/img/logocomplete.png)
+![logocomplete](/content/img/logocomplete.png)
 
 # Happy GM to you!
 
@@ -12,17 +12,25 @@ Compare your birthday with the birthdays of the worldwide Chess Grand Masters. T
 
 ## MVP (DOM - CANVAS)
 
-- Sign Up: enable the user to do a local copy of his personal informations (email, username and password)
+- Dashboard: it is mainly a welcome page for the user and a call to action to go to the Check it page. On the bottom part, you have slider showing who are the GM celebrating birthday today. 
+
+- API : retrieve the information I uploaded in Heroku and log the List of Grand Masters in the World that I found in a table in a [Wikipedia page](https://en.wikipedia.org/wiki/List_of_chess_grandmasters). I match the GM with their relative Wikipedia Summary information. If no thumbnails is available, a default image is displayed. This information is then retrieved in the Check It page according to the user input (her/his birthday). The result is displayed in three categories: "Someone was born the same day as you", "x GM were born celebrate their birthdays the same day as you", "x GM were born the same year as you"
+
+- Sign Up: enable the user to do a local copy of his personal informations (email, birthday, username and password)
+
 - Sign In: check whether the user has already signed-up by checking whether his user does exist in the local storage.
+
 - FAQ page: Answer common questions why this website has been done and how it works.
-- Dashboard: it is mainly a welcome page for the user. On the bottom part, there will be some dynamic elements retrieving who is having birthday today. 
-- API : retrieve the information from a Heroku App I uploaded myself and displaying the List of Grand Masters in the World that I found in a table in a Wikipedia page. I will match the players with the Wikipedia Summary information of the Grand Masters. If no thumbnails is available, a default image will be displayed.
+
+  
 
 ## Backlog
 
-- Calendar display
-- Today's birthday is in Carousel
-- Add Astrological Sign !
+- Give age information about the player if he is alive or his death date if he passed away. 
+- Do more validation with other languages wikipage to retrieve more thumbnails.
+- Add Astrological Sign ! XD
+- Use the Sign Up functionality to increase User Experience.
+- Add a filter on the result page to show only one of the three categories.
 
 ## Wireframes
 
@@ -38,18 +46,19 @@ Ironhack Web App/**
 - faq.html
 - register.html
 - signin.html
+- whoiam.html
 - css/
   - style.css
+  - carousel.css
 - js/
   - main.js
   - signup.js
   - user.js
   - validator.js
   - dataRetrieving.js
+  - database.js
 - content/
   - img/
-  - fonts/
-  - datasets/
 
 ## APIs
 
