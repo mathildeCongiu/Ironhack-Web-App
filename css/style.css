@@ -257,7 +257,7 @@ p {
   .upper-part {
     background-color: rgba(202, 162, 101, 0.85);
     width: 70vw;
-    margin: 2% 12% 8%;
+    margin: 2% auto 8%;
     padding: 20px;
   }
 
@@ -451,15 +451,10 @@ margin: 20px
 .box-1 { 
   background-color: #30a7c5; 
   color:white;
-  height: 10vh;
-
-}
-
-#check-it {
-  font-size: 30px;
-  padding: 1vh 0;
-  margin: 0 10%;
-  
+  height: 8vh;
+  width: 50vw;
+  margin-top: 6%;
+  font-size: 5vw;
 }
 
 /* Bottom part of the page */
@@ -570,13 +565,16 @@ margin: 20px;
 
   
 @media (min-width : 750px) {
-  #check-it {
-    margin: 0 30%;
-  }
+
   .div-title h2 {
     font-size: 3.5vw;
 
   }
+
+  .box-1 {
+    padding: 15px 0;
+  }
+
 }
 
 @media (min-width : 900px) {
@@ -585,11 +583,11 @@ margin: 20px;
     line-height: 4.5vw;
   }
 
-  #check-it {
+  /* #check-it {
     margin: 20px 37%;
     height: 60px;
     font-size: 30px;
-  }
+  } */
 
   .calendar label {
     font-size: 6em;
@@ -598,7 +596,10 @@ margin: 20px;
   .calendar input {
     height: 70px;
     font-size: 3em;
+    width: 430px;
+    margin: 0 auto;
   }
+
 .div-title {
   margin: 30px 40px;
 }
@@ -607,6 +608,17 @@ margin: 20px;
 
   }
   
+    .box-1 {
+height: 10vh;
+font-size: 50px;
+/* padding: 30px 0; */
+width: 430px;
+margin: 20px auto;
+    }
+
+.calendar {
+  margin: 0 auto;
+}
 }
 
 
