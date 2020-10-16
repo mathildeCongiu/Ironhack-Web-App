@@ -109,8 +109,8 @@ i {
 }
 
 .mobile-menu li {
-  padding: none;
-  margin: -12px 4px -12px -4px;
+  padding-left: none;
+  margin: -12px 0px -12px 0px;
 }
 
 .nav-totale {
@@ -120,6 +120,7 @@ i {
   justify-content: space-between;
   width: 100%;
 }
+
 
 @media screen and (min-width: 700px) {
   .first-menu {
@@ -867,4 +868,9 @@ form div {
     -webkit-transform: translateX(-6px) rotate(-1.2deg);
             transform: translateX(-6px) rotate(-1.2deg);
   }
+}
+
+.whoami {
+  color: white;
+  font-size: 20px;
 }
