@@ -1,3 +1,9 @@
+
+
+
+
+![logocomplete](/Users/mathildecongiu/Documents/code/ironhack/Projects/Ironhack Web App/content/img/logocomplete.png)
+
 # Happy GM to you!
 
 ## Description
