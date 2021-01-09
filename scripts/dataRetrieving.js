@@ -344,12 +344,19 @@ async function findWikiInfo() {
 
 async function getTodayBirthday() {
   let gmList = await getGMlist()
+  let todayMonth = today.getMonth() +1 
+  if (todayMonth < 10) {
+    todayMonth = "0" + todayMonth 
+  }
 
-  var todayDate = today.getDate() + "-" + (today.getMonth()+1)
+  let todayDay = today.getDate() 
+  if (todayDay < 10) {
+    todayDay = "0" + todayDay
+  }
+  var todayDate = todayDay + "-" + todayMonth
   let todayDateStr = todayDate.toString()
-  console.log(todayDateStr)
-  
 
+  
   let todayArr = [];
 
   for (let i= 0; i< gmList.length; i++) {
